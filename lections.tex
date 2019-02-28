@@ -1,0 +1,180 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Шрифты, кодировки, символьные таблицы, переносы
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+
+% Пакеты американского математического сообщества
+\usepackage{amssymb,amsfonts,amsmath,amsthm}  
+% Сокращения
+\usepackage{cancel}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+
+% Красная строка
+\usepackage{indentfirst}
+
+% Ссылки в pdf
+\usepackage[unicode, colorlinks, urlcolor=magenta, linkcolor=black]{hyperref}
+
+% Таблицы
+\usepackage{makecell,multirow} 
+
+% Графика
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{color} 
+\usepackage{float}
+% \usepackage{subcaption}
+
+% Геометрия страницы
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2.5cm,bottom=2.5cm,bindingoffset=0cm,headheight=18pt}
+
+% Колонтитулы
+\usepackage{fancyhdr} 
+% применим колонтитул к стилю страницы
+\pagestyle{fancy} 
+%очистим "шапку" страницы
+\fancyhead{} 
+%слева сверху на четных и справа на нечетных
+\fancyhead[R]{Бугров А.В., Сарафанов Ф.Г.} 
+%справа сверху на четных и слева на нечетных
+\fancyhead[L]{Лекции по прикладной электродинамике} 
+%очистим "подвал" страницы
+\fancyfoot{} 
+% номер страницы в нижнем колинтуле в центре
+\fancyfoot[C]{\thepage} 
+
+% Межстрочный отступ
+\usepackage{setspace}
+\linespread{1.15} % капельку увеличенный
+\frenchspacing % <<французские>> пробелы
+
+% Нумерация
+\renewcommand{\labelenumii}{\theenumii)}
+% В заголовках появляется точка, но при ссылке на них ее нет
+\usepackage{misccorr}
+
+% Содержание
+\usepackage{tocloft}
+\usepackage{secdot}
+\sectiondot{subsection}
+
+% Физика
+\usepackage{physics}
+
+% Новые команды
+\newcommand{\Mean}[1]{\langle#1\rangle}
+\newcommand{\Defi}{\underset{def}{=}}
+\newcommand{\Inte}{\int\limits_{-\infty}^{\infty}} 
+
+\addto\captionsrussian{%
+	\renewcommand{\contentsname}{Оглавление}
+	\renewcommand{\partname}{Часть}%
+}
+\def\thepart{\arabic{part}}
+\usepackage{tocloft}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}} % for parts
+% \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % for chapters
+% \newlength\mylen
+\renewcommand\thepart{\arabic{part}.}
+% \renewcommand\cftpartpresnum{Лекция~}
+% \renewcommand\cftsecpresnum{Лекция~}
+% \setlength{\cftsecnumwidth}{6em}
+% \renewcommand{\cftsecpresnum}{Лекция\ }
+% \renewcommand{\cftsecaftersnum}{.}
+% \renewcommand{\cftsecaftersnumb}{\newline}
+\renewcommand{\cftsecdotsep}{\cftdotsep}
+\renewcommand{\kappa}{\varkappa}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% #1: math symbol
+% #2: legend
+\def\alegend#1#2{\overset{\underset{\scriptstyle\downarrow}{\scriptstyle\text{#2}}}{#1}}
+\def\blegend#1#2{\underset{\underset{\scriptstyle\text{#2}}{\scriptstyle\uparrow}}{#1}}
+\def\hp{\hat{p}}
+\def\hx{\hat{x}}
+\def\hH{\hat{H}}
+
+% \usepackage[explicit]{titlesec}
+% \titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{Лекция\ \thesection.\ #1}
+\usepackage{epigraph}
+
+
+% \newcommand\praktika[1]{
+% \stepcounter{section}
+% \vspace{1.5em}
+% \noindent\textbf{\Large{Занятие \arabic{section}.\hspace{.2em} #1}}
+% % \newline 
+% \vspace{-0.5em}
+% \addcontentsline{toc}{section}{Занятие \arabic{section}.\hspace{.5em} #1}
+% }
+
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+
+
+% https://tex.stackexchange.com/questions/8720/overbrace-underbrace-but-with-an-arrow-instead
+
+\usepackage{xparse}% http://ctan.org/pkg/xparse
+
+\NewDocumentCommand{\overarrow}{O{=} O{\uparrow} m}{%
+  \overset{\makebox[0pt]{\begin{tabular}{@{}c@{}}$#3$\\[0pt]\ensuremath{#2}\end{tabular}}}{#1}
+}
+\NewDocumentCommand{\underarrow}{O{=} O{\downarrow} m}{%
+  \underset{\makebox[0pt]{\begin{tabular}{@{}c@{}}\ensuremath{#2}\\[0pt]$#3$\end{tabular}}}{#1}
+}
+
+\newcommand\undernoteqty[2]{
+	%
+	\underarrow[
+		\qty(\underbrace{#1})
+	][\uparrow]{\substack{#2}}
+	%
+}
+
+\newcommand{\pvec}[1]{\vec{#1}\mkern2mu\vphantom{#1}}
+% Нормальный вектор для штрихов
+
+\newcommand\undernote[2]{
+	%
+	\underarrow[
+		#1
+	][\uparrow]{\substack{#2}}
+	%
+}
+
+
+
+% ##############################################################################
+% ##############################################################################
+\newcommand*\dotvec[1][1,1]{\crossproducttemp#1\relax}
+\def\crossproducttemp#1,#2\relax{{\qty[\vec{#1}\times\vec{#2}\,]}}
+
+\newcommand*\prodvec[1][1,1]{\crossproducttempa#1\relax}
+\def\crossproducttempa#1,#2\relax{{\qty[{#1}\times{#2}\,]}}
+% ##############################################################################
+% ##############################################################################
+
+\begin{document}
+\input{titlepage}
+\newpage
+\tableofcontents 
+\newpage
+
+\part{Электромагнитные волны в линиях передачи}
+\input{lect/lect1} % Лекция от 06.02.2019 и начало лекции от 13.02, вплоть до "Волны в ЛП с идеальными ...."
+
+\section{Волны в линиях передачи с идеально проводящими границами}
+\input{lect/lect2} % Лекция от 13.02 начиная с этого заголовка
+
+\input{lect/lect3} % Лекция от 20.02
+
+\input{lect/lect4} % Лекция от 27.02
+
+\end{document}
