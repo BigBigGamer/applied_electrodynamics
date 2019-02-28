@@ -1,0 +1,82 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{cmap,pgfplots,pgfplotstable}
+\pgfplotsset{compat=newest}
+
+
+\begin{document}
+% \pgfplotstableread{data.tsv}\mytable 
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=7cm,
+			height=5 cm,
+			enlargelimits = true,
+			ymax = 3,
+			ymin = -0.02,
+			xmin = 0,
+			xmax = 3.5,
+			scale=1,
+			ylabel={$h_n$}, 			% подпись оси Y
+			xlabel={$\omega$}, 			% подпись оси X
+			% xticklabels={},
+				% yticklabels={},
+			xtick=\empty,
+			ytick=\empty,
+			%major grid style={
+			%	line width=0.5pt, 	% толщина основных линий сетки
+			%	draw=black!50 		% цвет основных линий сетки: 50% черного (80% белого) 
+			%},
+			minor grid style={
+				line width=0.5pt, 	% толщина промежуточных линий сетки
+				draw=black!20		% цвет промежуточных линий сетки
+			},
+			%minor tick num=1,		% количество промежуточных линий между основными
+ 			ticklabel style={
+ 				% scale=0.1			% уменьшим размер подписей меток на осях
+ 			},    
+ 			%xticklabel style={above, yshift=0.25em},
+ 			%yticklabel style={right},
+	    	axis lines=middle, 		% выравнивание оси y:  middle (в нуле)|left|right
+			%enlargelimits=true,
+			%xtick distance=0.5,		% расстояние между метками по оси X
+			%ytick distance=0.5,		% расстояние между метками по оси Y
+			% unit vector ratio = 1 1,% масштаб 1:1 осей X и Y
+			% clip=false,
+			% ymax= 1.5,
+    		x label style={
+    		at={(current axis.right of origin)}, 
+            xshift=1.5ex, anchor=center
+    		},
+extra x ticks={1},	% положение дополнительных тиков
+extra x tick labels={	% их подписи
+ 		{$\omega_{cr_{n}}$}
+}, 		
+    		y label style={
+    			% at={(axis description cs:0.01,1.07)},
+    			yshift=0.5em,
+    			anchor=center,		% расПоложение метКи ровно в точКе (0,1.1)
+    			black				% цвет метКи
+    		},		
+		]
+
+		\addplot[thick,domain={1:3},samples=100] {sqrt(x^2-1)};
+		\addplot[thick,domain={0:1},samples=100] {0};
+		% Добавляем графики на рисунок
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E0}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E1}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E2}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E3}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E4}] {\mytable};
+
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E0n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E1n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E2n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E3n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E4n}] {\mytable};
+		
+       	\end{axis}
+	\end{tikzpicture}	
+\end{document}
