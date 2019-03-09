@@ -1,0 +1,47 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% \path (180:1.5) coordinate (a);
+% \path (0:1.5) coordinate (b);
+% \foreach \phi in {-30,0,...,30}{
+%   \draw[dashed] (a) to[out={\phi},in={180-\phi}] (b);
+% }
+% \foreach \phi in {60,-60}{
+%   \draw[dashed] (a) .. controls ++(\phi:1.5) and ++({180-\phi}:1.5) .. (b);
+% }
+% \draw[draw=none, fill=white] (a) circle (0.32cm);
+% \draw[draw=none, fill=white] (b) circle (0.32cm);
+
+\draw (0,0) circle (1.5cm);
+
+\foreach \r in {0.3,0.5,0.6,0.7,0.8,1,1.3}{
+  \draw[black,thick,-<-=0.35] (0,0) circle (\r cm);
+}
+
+\foreach \phi in {72,144,...,360}{
+  \draw[,dashed] (\phi:0.2) -- (\phi:1.4);
+%   \path (\phi:1.5) coordinate (A);
+%   \path  ({180+(180-\phi)}:1.5) coordinate (B);
+%   % \draw  to[, in=0];
+%   \draw[-<-=0.45,thick] (A) to[out={\phi-180},in=-{\phi-180}] (B);
+}
+
+% \foreach \phi in {18,162}{
+%   \path (\phi:1.5) coordinate (A);
+%   \path  ({180+(180-\phi)}:1.5) coordinate (B);
+%   % \draw  to[, in=0];
+%   \draw[draw=none,fill=white] (A) to[out={\phi-180},in=-{\phi-180}] (B) -- cycle;
+% }
+
+\end{tikzpicture}
+\end{document}

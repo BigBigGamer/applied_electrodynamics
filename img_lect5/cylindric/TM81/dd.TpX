@@ -1,0 +1,19 @@
+%<TpX v="5" TeXFormat="tikz" PdfTeXFormat="tikz" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <bitmap x="-1.50582" y="-1.50582" w="3.01165" h="3.01165" link="1.jpg"/>
+%  <bezier closed="1" lw="0.01" lc="red" hc="black">0.193957,0.085537 0.155862,0.161726 0.394733,0.3345 0.816364,0.715976 1.12964,0.999416 1.499,0.085537 1.13761,0.0654595 0.856237,0.0498277 0.234112,0.00522637</bezier>
+%  <bezier closed="1" lw="0.01" lc="red" hc="black">0.329359,0.144832 0.300738,0.202075 0.480206,0.331882 0.796983,0.618494 1.03235,0.831446 1.30986,0.144832 1.03834,0.129748 0.82694,0.118004 0.359528,0.0844938</bezier>
+%  <bezier closed="1" lw="0.01" lc="red" hc="black">0.484429,0.207627 0.466657,0.24317 0.578093,0.32377 0.774786,0.501733 0.920932,0.633962 1.09324,0.207627 0.924648,0.19826 0.793387,0.190968 0.503162,0.170161</bezier>
+%  <bezier closed="1" lw="0.01" lc="red" hc="black">0.624749,0.263766 0.616458,0.280347 0.668444,0.317948 0.760203,0.400969 0.828381,0.462655 0.908765,0.263766 0.830115,0.259397 0.768881,0.255994 0.633488,0.246288</bezier>
+%</TpX>
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=1.00mm, y=1.00mm, inner xsep=0pt, inner ysep=0pt, outer xsep=0pt, outer ysep=0pt]
+\path[line width=0mm] (-3.51,-3.51) rectangle +(7.01,7.01);
+\node at (-1.51,-1.51)[anchor=south west]{\includegraphics[width=3.01mm]{1}};
+\definecolor{L}{rgb}{1,0,0}
+\path[line width=0.00mm, draw=L] (0.19,0.09) .. controls (0.16,0.16) and (0.39,0.33) .. (0.82,0.72) .. controls (1.13,1.00) and (1.50,0.09) .. (1.14,0.07) .. controls (0.86,0.05) and (0.23,0.01) .. (0.19,0.09) -- cycle;
+\path[line width=0.00mm, draw=L] (0.33,0.14) .. controls (0.30,0.20) and (0.48,0.33) .. (0.80,0.62) .. controls (1.03,0.83) and (1.31,0.14) .. (1.04,0.13) .. controls (0.83,0.12) and (0.36,0.08) .. (0.33,0.14) -- cycle;
+\path[line width=0.00mm, draw=L] (0.48,0.21) .. controls (0.47,0.24) and (0.58,0.32) .. (0.77,0.50) .. controls (0.92,0.63) and (1.09,0.21) .. (0.92,0.20) .. controls (0.79,0.19) and (0.50,0.17) .. (0.48,0.21) -- cycle;
+\path[line width=0.00mm, draw=L] (0.62,0.26) .. controls (0.62,0.28) and (0.67,0.32) .. (0.76,0.40) .. controls (0.83,0.46) and (0.91,0.26) .. (0.83,0.26) .. controls (0.77,0.26) and (0.63,0.25) .. (0.62,0.26) -- cycle;
+\end{tikzpicture}%
+\end{figure}

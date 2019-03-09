@@ -1,0 +1,79 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+      domain = 0:2,
+      y domain = 0:1,
+      view={0}{90},
+      minor tick num = 4,
+      xtick=\empty,
+      ytick=\empty,
+      xmin=0,
+      ymin=0,
+      xmax=2,
+      ymax=1,
+      % colorbar as palette,
+      % colorbar style={
+      %   grid=major,
+      %   grid style={black},
+      %   ytick style={draw=none},
+      % },
+      enlargelimits = false,
+      axis on top,
+    ]
+
+    % Colored background
+    % \addplot graphics[xmin = 0, xmax = 2, ymin = 0, ymax = 1] {myplot.png};
+    % Contour lines
+    % \foreach \i in {1,2,3,4,...,16}{
+        \addplot[dashed] table[col sep=comma]{TM11_data/data.csv} node[pos=0.5] {};
+    % }%black,->-=0.5, thick
+        % \addplot[mark=none,postaction={decorate}] table[col sep=comma] {myplot.csv};
+
+
+        % \addplot3[blue,
+        %     quiver={
+        %      u={-cos(pi*x/2*180/pi)*sin(pi*y*180/pi)},
+        %      v={-sin(pi*x/2*180/pi)*cos(pi*y*180/pi)},
+        %      scale arrows=0.07,
+        %     },
+        %     black, thick,
+        %     -stealth,samples=15]
+        %         {0};
+
+                \draw[fill=white, draw=none] (0.8,0.43) rectangle (1.2,0.57);
+    \draw[black, thick,->-=0.5] (0.82,0.61) to[out=135, in=-90] (0.4,1);
+    \draw[black, thick,->-=0.5] ({1+(1-0.82)},0.61) to[out=45, in=-90] (1.6,1);
+
+    \draw[black, thick,->-=0.5] (0.82,{0.5+(0.5-0.61)}) to[out=-135, in=90] (0.4,0);
+    \draw[black, thick,->-=0.5] ({1+(1-0.82)},{0.5+(0.5-0.61)}) to[out=-45, in=90] (1.6,0);
+    
+
+    \draw[black, thick,->-=0.5] (0.72,0.54) to[out=150, in=0] (0,0.7);
+
+    \draw[black, thick,->-=0.5] ({1+(1-0.72)},0.54) to[out=30, in=180] (2,0.7);
+    \draw[black, thick,->-=0.5] ({1+(1-0.72)},{0.5+(0.5-0.54)}) to[out=-30, in=180] (2,0.3);
+    \draw[black, thick,->-=0.5] (0.72,{0.5+(0.5-0.54)}) to[out=-150, in=0] (0,0.3);
+
+    \draw[black, thick,->-=0.5] (0.71,0.5) -- (0,0.5);
+    \draw[black, thick,->-=0.5] ({1+(1-0.71)},0.5) -- (2,0.5);
+    \draw[black, thick,->-=0.5] (1,0.64) -- (1,1);
+    \draw[black, thick,->-=0.5] (1,0.35) -- (1,0);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);
+
+    % \begin{scope}[rotate=pi/2]
+    % \draw[dashed] (0.1,0.1) to[out=90-19, in=-90+19] (0.1,0.9);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);      
+    % \end{scope}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

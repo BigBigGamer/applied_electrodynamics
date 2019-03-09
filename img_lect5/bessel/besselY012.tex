@@ -1,0 +1,58 @@
+\documentclass[12pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.16}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+	width=12cm, 
+	set layers,
+    axis on top,
+	ticklabel style={fill=white},
+	axis lines=middle, 
+	xmax=6.5,
+	xmin=0,
+	ymax=1.1, 
+	domain=0:6,
+	restrict y to domain=-1:1,
+	xlabel={$x$},
+	ylabel={$N$},
+	xtick=\empty,
+	ytick=\empty,
+	% extra x ticks={1.84,2.405,3.05,3.83},
+	extra y ticks={0,1},
+	% x tick style={thick, black},
+	% extra x tick labels={	% их подписи
+	 		% {$U_{min}$}, {$U_{min}+\Delta U$}
+	% }, 
+]
+
+\addplot+[id=parable, thick, dashed, samples=500, mark=none, width=2pt]
+	gnuplot{besy0(x)};% node[pin=90:{$J_0(x)$}]{}; 
+	
+	\addlegendentry{$N_0(x)$};
+\addplot+[id=parable, thick, samples=500, mark=none, width=2pt,
+	color=red, densely dash dot] gnuplot{besy1(x)};% node[pin=130:{$J_1(x)$}]{};
+	
+	\addlegendentry{$N_1(x)$};
+
+\addplot+[id=parable2,thick,  samples=500, mark=none, width=2pt,
+	color=black] gnuplot{2*1/x * besy1(x) - besy0(x)};% node[pin=-140:{$J_2(x)$}]{};
+	\addlegendentry{$N_2(x)$};
+
+% \draw[dashed] (1.84,0) -- (1.84,0.58186);
+% \draw[dashed] (3.05,0) -- (3.05,0.486);
+% \draw[red,fill=white] (1.84,0.58186) circle (2pt);
+% \draw[black,fill=white] (3.05,0.486) circle (2pt);
+
+\node (rect) at (axis description cs:0.8,0.2) [draw,thick,minimum width=2cm,minimum height=1cm] {$\lim\limits_{x\to 0} N_m(x)=-\infty$};
+
+\end{axis} 
+\end{tikzpicture} 
+\end{document}

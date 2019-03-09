@@ -1,0 +1,21 @@
+%<TpX v="5" TeXFormat="none" PdfTeXFormat="tikz" ArrowsSize="0,7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0,01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0,5" DashSize="1" LineWidth="0,3">
+%  <bitmap x="0,151855" y="-0,224781" w="120,597" h="100,225" link="1.jpg"/>
+%  <bezier lw="2,00">5,90 45,65 45,35 5,10</bezier>
+%  <bezier lw="2,00">115,90 75,65 75,35 115,10</bezier>
+%  <bezier lw="0,10">115,85 105,65 105,35 115,15</bezier>
+%  <bezier lw="0,10">5,85 15,65 15,35 5,15</bezier>
+%  <bezier lw="0,10">5,5 40,40 80,40 115,5</bezier>
+%  <bezier lw="0,10">5,95 40,60 80,60 115,95</bezier>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+\begin{tikzpicture}[x=1.00mm, y=1.00mm, inner xsep=0pt, inner ysep=0pt, outer xsep=0pt, outer ysep=0pt]
+\path[line width=0mm] (-1.85,-2.22) rectangle +(124.60,104.22);
+\node at (0.15,-0.22)[anchor=south west]{\includegraphics[width=120.60mm]{1}};
+\definecolor{L}{rgb}{0,0,0}
+
+\end{tikzpicture}%
+\else
+\fi
+\end{figure}
