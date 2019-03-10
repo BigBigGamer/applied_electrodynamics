@@ -1,1 +1,154 @@
 %!TEX root = ../lections.tex
+\subsection{Волны в линиях передачи}
+Основное - передача электромагнитной волны от источника к приёмнику.
+Основная теория - уравнения Максвелла. Задача сволится к краевой задаче.
+
+ Для монохроматических полей(синусоидально завясящих от времени):
+  \begin{equation}
+	\vec{E} = \vec{E}_0(\vec{r})\cdot \exp(i\omega t)
+\end{equation}
+где $\vec{E}_0(\vec{r})$ - комплексная амплитуда.
+Зависимость от времени присутствует в виде отдельного слан=гаемого - это приемущество, помогает превратить уравнения Максвелла в алгебраическое выражение за счёт разделения переменных.
+ \begin{equation}
+ 	\vec{E}_{nast} = Re(\vec{E}_0(\vec(r))\cdot \exp(e\omega t))
+\end{equation}
+\begin{equation}
+	E_x = |E_x(\vec(r)| \exp(i\omega t)
+\end{equation}
+Чаще всего будем писать так : $\vec{E}_0\qty(\vec{r}), \vec{H}_0\qty(\vec{r})$ - комплексные аплитуды(чтобы перейти к реальным нужно домножить на $\exp(i\omega t)$  и взять реальную часть)
+ 
+ 	Уравнения Максвелла
+\begin{gather}
+ 	rot(\vec{H}(\vec(r)) = \frac{4\pi}{c} \cdot \vec(j)^e + \frac{i \omega}{c} \cdot \epsilon \vec{E}
+\\
+ 	rot(\vec{E}) = -\frac{i \omega \mu}{c} \vec{H}
+\\
+ 	\Div(\epsilon \vec{E}) + \\frac{4\pi}{(i\omega)} \cdot(\vec(j)^e) = 0
+\\
+ 	\Div(\mu \vec{H}) = 0
+\\
+ 	\vec{B} = \mu \vec{H} = rot(\vec{A}_e)
+\\
+ 	\vec{E} = - \nabla\phi - (1/c) \frac{\partial \vec{A}^e}{\partial t} = - \nabla{\varphi} - \frac{i \omega}{c} \vec{A}^e
+\end{gather}
+$\pdv{t}$ заменяется на  $i \omega $ где 
+$\phi$ - сказялрный потенциал, $\vec{A}^e$  - векторный потенциал;
+Одно можно выразиь через другое из условия нормировки Лоренца:
+\begin{gather}
+	\Div{\vec{A}} + \frac{\epsilon \mu}{c} i \omega \Phi = 0\\
+	\phi = - \frac{c}{i \omega \epsilon \mu} \Div{\vec{A}}\\
+	\vec{H} = \frac{1}{\mu} rot{\vec{A}}\\
+	\vec{E} = \frac{1}{i k \epsilon \omega} (\nabla\\Div + k^2)\\
+ \vec{A}^e
+\end{gather}
+$ \epsilon \mu $  во всём курсе будут рассматриваться, как не завясящие от времени и координат
+Линия передачи -  ...
+Существуют два направления: продольное и поперечное.
+При описании через векторный потенциал проще перейти к уравнению Гемгольца:
+\begin{equation}
+	\delta \vec{A}_e + K^2 \vec{A}_e = 0
+\end{equation}
+
+Сначала рассмотри без источников( поэтому в формле справа 0) свободные волны.
+Как записывется поле для электромагнитной волны в линии передачЖ
+\begin{equation}
+	\vec{E}(\vec{r}_\perp , z , t) = \vec{E}_0(\vec{r}_\perp) \exp{i\omega - h z)}
+\end{equation}
+
+ h- продолное волновое число( постоянная распространения)
+
+ Мы рассмотрим волну бегущую по оси z.
+ \begin{equation}
+ 	E_{x}{nast} = Re{E_x}= |E_x(\vec{r}_\perp)| cos(\omega t - hz + \phi(\vec{r}_\perp))
+ \end{equation}
+
+ Самый простой метод - нужно задать векторный потенциал в виде:
+ \begin{equation}
+ 	\vec{A}_e = \phi^e(\vec{r}_\perp) \exp(-i h z) \vec{z}_0
+ \end{equation}
+
+Мы его задаём проще: направляем по оси z, зависимость такая же, как и у поля, а как зависит от $\vec{r}_\perp)$  не знаем.
+	$\phi^e(\vec{r}_\perp)$	поперечная волновая функция.
+Покажем, что решение уравения Максвелла можно найти в таком виде:
+\begin{gather}
+	\Div(\vec{A}_e)= -i h \phi^e(\vec{r}_\perp) \exp(-i h z)\\
+	\nabla(\Div(\vec{A}_e)) = (- h^2 \phi^e(\vec{r}_\perp) \vec{z}_0 - i h \nabla_\perp \phi^e(\vec{r}_\perp ) \exp(-i h z)\\
+	rot(\vec{A}_e)) = [\nabla(A^e_z,\vec{z}_0 )] = [\nabla_\perp \phi^e(\vec{r}_\perp, \vec{z}_0 ]\\
+	\nabla = \nabla_\perp + \vec{z}_0 \pdv{z}\\
+\end{gather} 
+
+TM - волна- поперечная магнитная волна( магнитное чисто поперечное, а Е и продолное и поперечное)
+\begin{gather}
+	E_z = \frac{\kappa^2}{i k_0 \epsilon \mu} \nabla_\perp \phi^e(\vec{r}_\perp \exp{i\omega - h z)}\\
+	\vec{E}_\perp = - \frac{h}{k_0 \varepsilon \mu} \nabla_\perp \phi^e(\vec{r}_{\perp} \exp{i\omega - h z)} \\
+%
+	\vec{H}_\perp = \frac{1}{\mu} [\nabla_\perp \phi^e(\vec{r}_\perp, \vec{z}_0] \exp{i\omega - h z)}\\
+	H_z = 0
+\end{gather}
+\begin{gather}
+	\vec{E} = \vec{E}_\parallel + \vec{E}_\perp\\
+	\vec{E}_\parallel = \vec{z}_0 E_z
+\end{gather}
+\begin{equation}
+	\vec{A} + \frac{\epsilon \mu}{c^2} \frac{\partial^2\vec{A}_e}{\partial{t}^2} = 0
+\end{equation}
+Это уравнение Гемгольца при произвольной зависимости от времени.
+\begin{gather}
+	\nabla(A_z) + k^2 A_z = 0\\
+	K^2 = \frac{\omega}{c^2} \varepsilon \\
+	\nabla =  \pdv[2]{x} + \pdv[2]{y}+ \pdv[2]{z}\\
+	\nabla_\perp =  \pdv[2]{x} + \pdv[2]{y}
+\end{gather}
+Это уравнение Гемгольца при гармонической зависимости от времени.
+\begin{equation}
+	\frac{\partial^2}{\partial{z}^2} = -h^2
+\end{equation}
+\begin{gather}
+	A_z^e = \phi^e(\vec{r}_{\perp} \exp{i \omega - h z)}\\
+	\delta_\perp + (k^2 - h^2) \phi^e = 0
+\end{gather}
+Функция $\phi^e$ должна удовлетворять двумерному уравнению Гемгольца.
+\begin{equation}
+	\kappa^2 = k^2 - h^2 = K_0^2 \varepsilon \mu - h^2\\
+	\delta_\perp \phi^e + \kappa^2 \phi^e = 0
+\end{equation}
+где $\kappa^2$ - поперечное волновое число.
+Если $\phi^e$ удовлетворяет уравнению выше, то и удовлетворяет уравнению Максвелла.
+
+TЕ - волна - поперечная элекрическая волна.
+
+Уравнения Максвелла симметричны относительно полей, но мы получили неравноправие векторов. Это просто одно из решений. Но есть ещё	одно решение. И чтобы его получиь воспользуемся принципом двойственности.
+
+TЕ - волна - поперечная элекрическая волна.
+\begin{gather}
+%
+H_z = \frac{\kappa^2}{i k_0 \epsilon \mu} \nabla_\perp \phi^m(\vec{r}_{\perp} \exp{i\omega - h z)}\\
+%
+\vec{H}_\perp = - \frac{h}{k_0 \varepsilon \mu} \nabla_\perp \phi^m(\vec{r}_{\perp} \exp{i\omega - h z)} \\
+%
+\vec{E}_\perp = - \frac{1}{\epsilon} [\nabla_\perp \phi^m(\vec{r}_{\perp}, \vec{z}_0] \exp{i\omega - h z)}\\
+E_z = 0
+%
+\end{gather}
+$\phi$ не обязано быть таким же, пожтому мы ставим индексы $m$ и $е$, но должно удовлетворять уравнению:
+\begin{equation}
+	\delta_\perp \phi^m + \kappa^2 \phi^m = 0
+\end{equation}
+ТЕМ - волна.
+Когда $\kappa = 0, h = k$ тогда $H_z = E_z = 0$. Это чисто поперечная волна(ТЕМ)
+\begin{gather}
+	H_z = E_z = 0\\
+	\vec{E}_\perp = - \frac{1}{\sqrt{\varepsilon \mu}} \nabla_\perp \phi(\vec{r}_\perp \exp{i\omega - h z)} \\
+	\vec{H}_\perp = \frac{1}{\mu} [\nabla_\perp \phi(\vec{r}_\perp), \vec{z}_0] \\\exp{i\omega - h z)}
+\end{gather}
+Эта волна удовлетворяет уравнению:
+\begin{equation}
+	\nabla_\perp \phi = 0
+\end{equation}
+Свойства уравнений (не знаю каких)
+\begin{enumerate}
+	\item Поля выражены через скалярные функции
+	\item Продольные компоненты пропорциональны этой волновой функции
+	\item Поперечные компоненты пропорциональныградиенту этой волновой функции
+	\item  Нужно задать $\phi^e и \phi^m$ , чтобы можно было полностью описать поля.
+\end{enumerate}

@@ -14,6 +14,7 @@
 	axis lines=middle, 
 	xmax=6.5,
 	ymax=1.2, 
+	ymin=-0.5,
 	domain=0:6,
 	xlabel={$x$},
 	ylabel={$J$},
@@ -42,8 +43,10 @@
 
 \draw[dashed] (1.84,0) -- (1.84,0.58186);
 \draw[dashed] (3.05,0) -- (3.05,0.486);
+\draw[dashed] (3.83,0) -- (3.83,-0.405);
 \draw[red,fill=white] (1.84,0.58186) circle (2pt);
 \draw[black,fill=white] (3.05,0.486) circle (2pt);
+\draw[blue,fill=white] (3.83,-0.405) circle (2pt);
 
 \end{axis} 
 \end{tikzpicture} 
