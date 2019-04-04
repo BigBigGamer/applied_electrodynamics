@@ -1,0 +1,107 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{cmap,pgfplots,pgfplotstable}
+\pgfplotsset{compat=newest}
+
+
+\begin{document}
+% \pgfplotstableread{data.tsv}\mytable 
+	\begin{tikzpicture}
+		\begin{axis}[
+			% width=7cm,
+			height=6 cm,
+			% enlargelimits = true,
+			% legend pos= south east,
+			legend pos=outer north east,
+			% ymax = 1,
+			% ymin = -1,
+			xmin = 0,
+			ymin=0,
+			xmax=4.5,
+			ymax=3.5,
+			% xmax = 1.1*pi,
+			% scale=1,
+			ylabel={$|h''|$}, 			% подпись оси Y
+			xlabel={$\omega$}, 			% подпись оси X
+			% xticklabels={},
+				% yticklabels={},
+			xtick=\empty,
+			ytick=\empty,
+			%major grid style={
+			%	line width=0.5pt, 	% толщина основных линий сетки
+			%	draw=black!50 		% цвет основных линий сетки: 50% черного (80% белого) 
+			%},
+			minor grid style={
+				line width=0.5pt, 	% толщина промежуточных линий сетки
+				draw=black!20		% цвет промежуточных линий сетки
+			},
+			%minor tick num=1,		% количество промежуточных линий между основными
+ 			ticklabel style={
+ 				% scale=0.1			% уменьшим размер подписей меток на осях
+ 			},    
+ 			%xticklabel style={above, yshift=0.25em},
+ 			%yticklabel style={right},
+	    	axis lines=middle, 		% выравнивание оси y:  middle (в нуле)|left|right
+			%enlargelimits=true,
+			%xtick distance=0.5,		% расстояние между метками по оси X
+			%ytick distance=0.5,		% расстояние между метками по оси Y
+			% unit vector ratio = 1 1,% масштаб 1:1 осей X и Y
+			restrict y to domain=0:3,
+			% clip=false,
+			% ymax= 1.5,
+    		x label style={
+    		at={(current axis.right of origin)}, 
+            xshift=1.7ex, anchor=center
+    		},
+extra x ticks={1,1.70},	% положение дополнительных тиков
+extra x tick labels={	% их подписи
+ 		{$\omega_\text{кр}$},
+ 		{$\omega_\text{опт}$}
+}, 		
+% extra y ticks={1},	% положение дополнительных тиков
+% extra y tick labels={	% их подписи
+ 		% {$\frac{c}{\sqrt{\varepsilon\mu}}$}
+% }, 		
+    		y label style={
+    			% at={(axis description cs:0.01,1.07)},
+    			yshift=0.7em,
+    			anchor=center,		% расПоложение метКи ровно в точКе (0,1.1)
+    			black				% цвет метКи
+    		},		
+		]
+
+
+		\draw[dashed] (1.7,0) -- (1.7,1.54);
+		\addplot[thick,dashed, magenta,domain={1.7:4},samples=350] {1.54-0.1*(x-1.7)^2} node[pos=1,below] {$\mathrm{TE}_{0n}^\text{кругл}$};
+
+		\addplot[thick,domain={1:4},samples=350] {1/sqrt(1-1/x^2)+sqrt(x)-1};% node[pos=0.5,above] {$v_\text{ф}$};
+		\draw[dashed] (1,0) -- (1,3.5);
+		% \draw[dashed] (0,1) -- (4.5,1);
+		% \addlegendentry{$t=t_0$}
+		% \addlegendentry{$t=t_0+\delta t$}
+		% \addplot[thick,densely dashed,domain={-1:pi},samples=350] {exp(-x/2)/2*0.6};
+		% \foreach \dd in {0.2,-0.2,-0.6,-1}{
+		% 	\addplot[thick,dashed, opacity=0.6,domain={-1:pi},samples=350] {exp(-x/2)/2*\dd};
+		% }
+
+		% \draw (pi/2,1/2) node [above] {$h>0:\,\, \longrightarrow$};
+		% \addplot[thick,domain={0:1},samples=100] {0};
+		% Добавляем графики на рисунок
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E0}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E1}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E2}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E3}] {\mytable};
+		% \addplot[smooth] table[x expr=\thisrow{xi}, y expr=\thisrow{E4}] {\mytable};
+
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E0n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E1n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E2n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E3n}] {\mytable};
+		% \addplot[smooth, dashed] table[x expr=\thisrow{xi}, y expr=\thisrow{E4n}] {\mytable};
+		
+       	\end{axis}
+	\end{tikzpicture}	
+\end{document}
