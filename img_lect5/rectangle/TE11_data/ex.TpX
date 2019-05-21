@@ -1,0 +1,27 @@
+%<TpX v="5" TeXFormat="tikz" PdfTeXFormat="tikz" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <bitmap x="-0.000270486" y="0" w="2.00027" h="1.00103" link="1.jpg" keepaspectratio="0"/>
+%  <line x1="-0.342492" y1="0.698225" x2="-0.342492" y2="0.698225" li="dash" lw="0.10"/>
+%  <bezier li="dash" lw="0.03">0.2,0.9 0.5,0.75 0.5,0.25 0.2,0.1</bezier>
+%  <bezier li="dash" lw="0.10">0.224419,0.852837</bezier>
+%  <bezier li="dash" lw="0.03">1.8,0.9 1.55,0.75 1.55,0.25 1.8,0.1</bezier>
+%  <bezier li="dash" lw="0.03">1.7,0.05 1.2,0.25 0.8,0.25 0.3,0.05</bezier>
+%  <bezier li="dash" lw="0.05">0.3,0.95 0.8,0.75 1.2,0.75 1.7,0.95</bezier>
+%  <bezier li="dash" lw="0.03">0.15,0.9 0.304613,0.693852 0.304613,0.306149 0.15,0.1</bezier>
+%  <bezier li="dash" lw="0.03">1.85,0.9 1.69539,0.693852 1.69539,0.306149 1.85,0.1</bezier>
+%</TpX>
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=1.00mm, y=1.00mm, inner xsep=0pt, inner ysep=0pt, outer xsep=0pt, outer ysep=0pt]
+\path[line width=0mm] (-2.34,-2.00) rectangle +(6.34,5.00);
+\node at (0.00,0.00)[anchor=south west]{\includegraphics[width=2.00mm, height=1.00mm]{1}};
+\definecolor{L}{rgb}{0,0,0}
+\path[line width=0.03mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (-0.34,0.70);
+\path[line width=0.01mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (0.20,0.90) .. controls (0.50,0.75) and (0.50,0.25) .. (0.20,0.10);
+\path[line width=0.03mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (0.22,0.85);
+\path[line width=0.01mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (1.80,0.90) .. controls (1.55,0.75) and (1.55,0.25) .. (1.80,0.10);
+\path[line width=0.01mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (1.70,0.05) .. controls (1.20,0.25) and (0.80,0.25) .. (0.30,0.05);
+\path[line width=0.02mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (0.30,0.95) .. controls (0.80,0.75) and (1.20,0.75) .. (1.70,0.95);
+\path[line width=0.01mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (0.15,0.90) .. controls (0.30,0.69) and (0.30,0.31) .. (0.15,0.10);
+\path[line width=0.01mm, draw=L, dash pattern=on 2.00mm off 1.00mm] (1.85,0.90) .. controls (1.70,0.69) and (1.70,0.31) .. (1.85,0.10);
+\end{tikzpicture}%
+\end{figure}

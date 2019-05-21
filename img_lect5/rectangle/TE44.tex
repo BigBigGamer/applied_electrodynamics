@@ -1,0 +1,95 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{decorations.pathreplacing}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+      domain = 0:2,
+      % y domain = 0:1,
+      % view={0}{90},
+      minor tick num = 4,
+      xtick=\empty,
+      ytick=\empty,
+      ymax=1.01,
+      ymin=-0.5,
+      axis lines=none,
+      xmax=2.02,
+      xmin=-0.25,
+      % colorbar as palette,
+      % colorbar style={
+      %   grid=major,
+      %   grid style={black},
+      %   ytick style={draw=none},
+      % },
+      enlargelimits = false,
+      % clip=false,
+      axis on top,
+    ]
+
+    % Colored background
+    % \addplot graphics[xmin = 0, xmax = 2, ymin = 0, ymax = 1] {myplot.png};
+    % Contour lines
+    % \foreach \x in {}{
+		
+    % }
+
+	% \foreach \y in {}{
+	% }
+        \addplot[black,thick] table[col sep=comma]{TE44_data/data.csv} node[pos=0.5] {};
+
+    \draw[draw=none,fill=white, opacity=0.8] (0,0) rectangle (1,1);
+    \draw[draw=none,fill=white, opacity=0.8] (1.5,0) rectangle (2,1);
+
+    \draw[draw=none,fill=white, opacity=0.8] (1,0.75) rectangle (1.5,2);
+    \draw[draw=none,fill=white, opacity=0.8] (1,0.5) rectangle (1.5,0);
+
+	\pgfplotsinvokeforeach{0.5,1,1.5,2}{%
+		\draw[densely dashed, magenta] (#1,0) -- (#1,1); 
+	}
+	\pgfplotsinvokeforeach{0.25,0.5,...,1}{%
+		\draw[densely dashed, magenta] (0,#1) -- (2,#1); 
+	}
+
+    \draw[black] (0,0) rectangle (2,1);
+
+	\draw[decorate,decoration={brace,mirror}]
+	  ([yshift=5pt]0,-0.1) --
+	    node[below=3pt] {$m$} 
+	  ([yshift=5pt]2,-0.1);
+
+	\draw[decorate,decoration={brace}]
+	  ([xshift=5pt]-0.1,0) --
+	    node[left=3pt] {$n$} 
+	  ([xshift=5pt]-0.1,1);
+        % \addplot[mark=none,postaction={decorate}] table[col sep=comma] {myplot.csv};
+
+
+        % \addplot3[blue,
+        %     quiver={
+        %      u={-sin(pi*x/2*180/pi)*cos(pi*y*180/pi)},
+        %      v={-cos(pi*x/2*180/pi)*sin(pi*y*180/pi)},
+        %      scale arrows=0.1,
+        %     },
+        %     densely dashed,
+        %     -stealth,samples=15]
+        %         {0};
+
+        %         \draw[fill=white, draw=none] (0.9,0.5) rectangle (1.1,0.6);
+    % \draw[dashed] (0.1,0.1) to[out=90-19, in=-90+19] (0.1,0.9);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);
+
+    % \begin{scope}[rotate=pi/2]
+    % \draw[dashed] (0.1,0.1) to[out=90-19, in=-90+19] (0.1,0.9);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);      
+    % \end{scope}
+  \end{axis}
+\end{tikzpicture}
+\end{document}

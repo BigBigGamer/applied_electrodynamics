@@ -1,0 +1,79 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{arrows}
+\usetikzlibrary{3d}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{tikz,amssymb}
+\usetikzlibrary
+    {
+        decorations.pathmorphing,
+        decorations.pathreplacing,
+        decorations.markings,
+        shapes.misc,
+        patterns,
+        calc,
+        scopes,
+        arrows,
+        fadings,
+        through,
+        shapes.misc,
+        arrows.meta,
+        3d,
+        quotes,
+        angles,
+        babel
+    }
+
+
+\begin{document}
+\begin{tikzpicture}[scale=2,
+    %Option for nice arrows
+    >=stealth, %
+    inner sep=0pt, outer sep=2pt,%
+    axis/.style={thick,->},
+    wave/.style={thick,color=#1,smooth},
+    polaroid/.style={fill=black!60!white, opacity=0.3},
+    interface1/.style={draw=gray!60,
+        % The border decoration is a path replacing decorator. 
+        % For the interface style we want to draw the original path.
+        % The postaction option is therefore used to ensure that the
+        % border decoration is drawn *after* the original path.
+        postaction={draw=gray!60,decorate,decoration={border,angle=-135,
+                    amplitude=0.2cm,segment length=0.5mm}}}, 
+]
+    % Colors
+    \colorlet{darkgreen}{green!50!black}
+    \colorlet{lightgreen}{green!80!black}
+    \colorlet{darkred}{red!50!black}
+    \colorlet{lightred}{red!80!black}
+    \draw[thick] (0,0) rectangle (1.5,1);
+    \draw (1.5,0)  node[below] {$a$};
+    \draw (0,1)  node[left] {$b$};
+    % \draw (0,0)  node[anchor=north east,yshift=-0.5em, xshift=-.5em] {$0$};
+
+    \draw[white] (-0.25,-0.25);
+    % \draw (0.75,0)  node[below, yshift=-.25cm] {$\varkappa(a,b)$};
+    
+    \draw[->] (0,0) -- (2,0) node [right] {$x$};
+    \draw[->] (0,0) -- (0,1.5) node [right] {$y$};
+
+    \draw[fill=white,draw=none] (0,0) circle (2.5pt) node {$\bigotimes$} node[left,xshift=-.5em,yshift=-.5em] {$z$};
+    % \draw (3,0.5) circle (.5cm);
+    % \draw[->] (3,0.5) -- node[sloped,above] {r} ++(30:0.5);
+    % \draw (3,0)  node[below, yshift=-.25cm] {$\varkappa(r)$};
+
+    \foreach \x in {0.25,0.5,0.6,0.7,0.75,0.8,0.9,1,1.25}{
+        \draw[postaction=decorate,decoration={
+        markings,
+        mark=at position 0.6 with {\arrow{>}}}] (\x,0) -- ++ (0,1);
+    }
+    \foreach \y in {0.25,0.5,0.75}{
+        \draw[dashed] (0.1,\y) -- ++(1.3,0);
+        % \draw[postaction=decorate,decoration={
+        % markings,
+        % mark=at position 0.5 with {\arrow{>}}}] (\x,0) -- ++ (0,1);
+    }
+\end{tikzpicture}
+\end{document}

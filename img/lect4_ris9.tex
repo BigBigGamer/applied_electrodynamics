@@ -1,0 +1,86 @@
+\documentclass[tikz]{standalone}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{cmap,pgfplots,pgfplotstable}
+\pgfplotsset{compat=newest}
+
+\usepgfplotslibrary{groupplots}
+\begin{document}
+% \pgfplotstableread{data.tsv}\mytable 
+	\begin{tikzpicture}
+
+ \begin{groupplot}[
+    group style = {
+     	group size = 3 by 1,
+     	every plot/.style={
+			x label style={ at={(current axis.right of origin)}, xshift=17ex, anchor=center },
+		    y label style={ yshift=0.7em, anchor=center	},	
+		}
+    },
+	width=12cm,
+	height=4 cm,
+    ]
+    \nextgroupplot[
+    	ymax = 1.5, xmax = 1.2*pi,	xmin=-0.1,% ymin=-0.1,	
+    	width=5cm,	
+    	ylabel={$E_y$}, 			% подпись оси Y
+		xlabel={$x$}, 			% подпись оси X
+		xtick=\empty,
+		ytick=\empty,
+		axis lines=middle,
+		x label style={ at={(current axis.right of origin)}, xshift=1.7ex, anchor=center },
+	    y label style={ yshift=0.7em, anchor=center	},	
+		extra x ticks={pi},	% положение дополнительных тиков
+		extra x tick labels={	% их подписи
+		 		{$a$}
+		}, 		
+	]
+		\addplot[thick,domain={0:pi},samples=100] {sin(deg(x)))};
+		% \draw[<-] (1.5-0.037,0.5) -- (1,0.5);
+		% \draw[<-] (1.5+0.037,0.5) -- (2,0.5) node[right] {$\Delta\omega$};
+      % \draw[red, dashed, thick] (axis cs:11,0) rectangle (axis cs:32,850);
+    \nextgroupplot[
+    	ymin = -1.5, ymax=1.2, xmax = 1.2*pi,	xmin=-0.1,% ymin=-0.1,	
+    	width=5cm,	
+    	ylabel={$H_x$}, 			% подпись оси Y
+		xlabel={$x$}, 			% подпись оси X
+		xtick=\empty,
+		ytick=\empty,
+		axis lines=middle,
+		x label style={ at={(current axis.right of origin)}, xshift=1.7ex, anchor=center },
+			    y label style={ yshift=0.7em, anchor=center	},	
+		extra x ticks={pi},	% положение дополнительных тиков
+		extra x tick labels={	% их подписи
+		 		{$a$}
+		}, 		
+	]
+		\addplot[thick,domain={0:pi},samples=100] {-sin(deg(x)))};
+      % \draw[red, dashed, thick] (axis cs:11,0) rectangle (axis cs:32,850);
+    \nextgroupplot[
+    	ymin = -1.5, ymax=1.2, xmax = 1.2*pi,	xmin=-0.1,% ymin=-0.1,	
+    	width=5cm,	
+    	ylabel={$H_z$}, 			% подпись оси Y
+		xlabel={$x$}, 			% подпись оси X
+		xtick=\empty,
+		ytick=\empty,
+		axis lines=middle,
+		x label style={ at={(current axis.right of origin)}, xshift=1.7ex, anchor=center },
+	    y label style={ yshift=0.7em, anchor=center	},	
+		extra x ticks={pi},	% положение дополнительных тиков
+		extra x tick labels={	% их подписи
+		 		{$a$}
+		}, 		
+	]
+		\addplot[thick,domain={0:pi},samples=100] {cos(deg(x)))};
+   		% \addplot[thick, domain={0:1.15*pi},samples=600] {sin(deg(x))};
+   		% \addplot[thick, domain={0:1.15*pi},samples=600] {-sin(deg(x))} node [pos=0.43,below] {Огибающая};
+
+   		% \draw (pi,1) node[above] (z) {Заполнение};
+
+   		% \draw[-latex,thick,black] (z.south) -- (pi/2,0);
+      % \addplot[very thick] table [x = Number, y = Orders] {\Data};
+  \end{groupplot}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,96 @@
+\documentclass[border=5pt]{standalone}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsmath,amssymb,cmap}
+\usepackage{pgfplots}
+\usepackage[outline]{contour}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\usepgfplotslibrary{colormaps}
+\begin{document}
+    \begin{tikzpicture}[scale=1.5]
+        \begin{axis}[
+        xmin=-1.5,xmax=1.5,ymin=-1.5, ymax=1.5, %zmin=0,
+        restrict y to domain=-1.5:1.5,
+        restrict x to domain=-1.5:1.5,
+        view={0}{90},
+        axis lines=none,
+        % shader=flat corner,
+        % colorbar,
+        % colormap name=viridis,
+        % xtick=\empty,
+        % ytick=\empty,
+        % title={$TE_{10}$ wave in rectangular waveguide},
+        % colorbar style={
+        %     % title=Color key,
+        %     % ylabel=Z-value,
+        %     ytick={\empty},
+        %     % yticklabel style={
+        %     %     text width=2.5em,
+        %     %     align=right,
+        %     %     /pgf/number format/.cd,
+        %     %         fixed,
+        %     %         fixed zerofill
+        %     % }
+        %     extra y ticks={-1,0,1},  % положение дополнительных тиков
+        %     extra y tick labels={ % их подписи
+        %         {$E_y\rightarrow \mathrm{min}$}, {$E_y=0$}, {$E_y\rightarrow \mathrm{max}$}
+        %     },    
+        % }
+        % x=1cm,y=1cm,z=1cm,
+        ] 
+            % \foreach \i in {1,2,3,4,...,10}{
+          % \addplot3[blue,/pgfplots/quiver,
+          %   domain=0:6*pi/2,
+          %   domain y=0:3*pi/2,
+          %   quiver/u=0,
+          %   quiver/v=0,
+          %   quiver/w={sin(deg(x))*cos(deg(y))},
+          %   quiver/scale arrows=0.1,
+          %   -stealth,samples=20] {0};
+
+          % \addplot3 [
+          % domain=-1.5:1.5,
+          % domain y=-1:1,
+          % samples=80,
+          % surf,
+          % ] {cos(deg(x))*sin(deg(y))};
+            \foreach \i in {1,2,3,4,...,440}{
+                \addplot[black,->-=0.5, thick] table[]{data_lect4_ris5/data\i.tsv};
+            } \contourlength{2pt};
+
+            \draw [fill=blue] (axis cs:0.5,0) circle (9pt) node[] {\contour{white}{$-$}};
+            \draw[fill=red] (axis cs:-0.5,0) circle (9pt) node[] {\contour{white}{$+$}};
+            % \pgfmathsetmacro\a{3*pi/2}
+            % \pgfmathsetmacro\b{3*pi/2+0.5}
+            % \pgfmathsetmacro\c{3*pi/2+1}
+            % \foreach \yValue in {0.00,0.1,...,1.00} {
+            %     \edef\temp{\noexpand\draw [red] (axis cs:0,\yValue) -- (axis cs:1,\yValue);}
+            %     \temp
+            % }
+
+            % \pgfplotsinvokeforeach{3*pi/2,3.2*pi/2}{%
+            % %     % \draw (\z,\y) circle (2pt);
+            %     \pgfmathsetmacro\z{#1}
+            %     \pgfmathsetmacro\start{pi/2+0.2}
+            %     \pgfmathsetmacro\step{1/sin(deg(\z))/10+\start}
+            %     \pgfmathsetmacro\finish{3*pi/2}
+            % %     \edef\temp{\noexpand
+            %     \foreach \x in {\start,\step,...,\finish} {
+            %     % \pgfplotsforeachungrouped \x in {\start,\step,...,\finish} {
+            %      % \pgfplotsinvokeforeach{\start,\step,...,\finish}{%
+            %         \addplot[mark=otimes] coordinates {(\z,\x)};
+            %      };
+            % };
+            % \draw (0,0) node {1};
+        \end{axis}
+            % \draw (4.71,4.00 cm) circle (4pt);
+    \end{tikzpicture}
+\end{document}

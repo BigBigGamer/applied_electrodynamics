@@ -1,0 +1,47 @@
+%<TpX v="5" TeXFormat="tikz" PdfTeXFormat="tikz" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <bitmap x="0" y="-1" w="3.36657" h="3" link="tm01z.jpg"/>
+%  <bezier lw="0.01">0.15,0 0.2,-0.45 0.8,-0.45 0.85,0</bezier>
+%  <bezier lw="0.01">0.05,0 0.05,-0.6 0.95,-0.6 0.95,0</bezier>
+%  <bezier lw="0.01">0.25,0 0.35,-0.3 0.65,-0.3 0.75,0</bezier>
+%  <bezier lw="0.01">1.05,0 1.05,-0.6 1.95,-0.6 1.95,0</bezier>
+%  <bezier lw="0.01">1.15,0 1.2,-0.45 1.8,-0.45 1.85,0</bezier>
+%  <bezier lw="0.01">1.25,0 1.35,-0.3 1.65,-0.3 1.75,0</bezier>
+%  <bezier lw="0.01">1.05,-1 1.05,-0.4 1.95,-0.4 1.95,-1</bezier>
+%  <bezier lw="0.01">1.15,-1 1.2,-0.55 1.8,-0.55 1.85,-1</bezier>
+%  <bezier lw="0.01">1.25,-1 1.35,-0.7 1.65,-0.7 1.75,-1</bezier>
+%  <bezier lw="0.01">0.15,-1 0.2,-0.55 0.8,-0.55 0.85,-1</bezier>
+%  <bezier lw="0.01">0.25,-1 0.35,-0.7 0.65,-0.7 0.75,-1</bezier>
+%  <bezier lw="0.01">0.0500001,-1 0.0500001,-0.4 0.95,-0.4 0.95,-1</bezier>
+%  <bezier lw="0.01">2.05,0 2.05,-0.6 2.95,-0.6 2.95,0</bezier>
+%  <bezier lw="0.01">2.15,0 2.2,-0.45 2.8,-0.45 2.85,0</bezier>
+%  <bezier lw="0.01">2.25,0 2.35,-0.3 2.65,-0.3 2.75,0</bezier>
+%  <bezier lw="0.01">2.05,-1 2.05,-0.4 2.95,-0.4 2.95,-1</bezier>
+%  <bezier lw="0.01">2.15,-1 2.2,-0.55 2.8,-0.55 2.85,-1</bezier>
+%  <bezier lw="0.01">2.25,-1 2.35,-0.7 2.65,-0.7 2.75,-1</bezier>
+%</TpX>
+\begin{figure}
+\centering
+\begin{tikzpicture}[x=1.00mm, y=1.00mm, inner xsep=0pt, inner ysep=0pt, outer xsep=0pt, outer ysep=0pt]
+\path[line width=0mm] (-2.00,-3.00) rectangle +(7.37,7.00);
+\node at (0.00,-1.00)[anchor=south west]{\includegraphics[width=3.37mm]{tm01z}};
+\definecolor{L}{rgb}{0,0,0}
+\path[line width=0.00mm, draw=L] (0.15,0.00) .. controls (0.20,-0.45) and (0.80,-0.45) .. (0.85,0.00);
+\path[line width=0.00mm, draw=L] (0.05,0.00) .. controls (0.05,-0.60) and (0.95,-0.60) .. (0.95,0.00);
+\path[line width=0.00mm, draw=L] (0.25,0.00) .. controls (0.35,-0.30) and (0.65,-0.30) .. (0.75,0.00);
+\path[line width=0.00mm, draw=L] (1.05,0.00) .. controls (1.05,-0.60) and (1.95,-0.60) .. (1.95,0.00);
+\path[line width=0.00mm, draw=L] (1.15,0.00) .. controls (1.20,-0.45) and (1.80,-0.45) .. (1.85,0.00);
+\path[line width=0.00mm, draw=L] (1.25,0.00) .. controls (1.35,-0.30) and (1.65,-0.30) .. (1.75,0.00);
+\path[line width=0.00mm, draw=L] (1.05,-1.00) .. controls (1.05,-0.40) and (1.95,-0.40) .. (1.95,-1.00);
+\path[line width=0.00mm, draw=L] (1.15,-1.00) .. controls (1.20,-0.55) and (1.80,-0.55) .. (1.85,-1.00);
+\path[line width=0.00mm, draw=L] (1.25,-1.00) .. controls (1.35,-0.70) and (1.65,-0.70) .. (1.75,-1.00);
+\path[line width=0.00mm, draw=L] (0.15,-1.00) .. controls (0.20,-0.55) and (0.80,-0.55) .. (0.85,-1.00);
+\path[line width=0.00mm, draw=L] (0.25,-1.00) .. controls (0.35,-0.70) and (0.65,-0.70) .. (0.75,-1.00);
+\path[line width=0.00mm, draw=L] (0.05,-1.00) .. controls (0.05,-0.40) and (0.95,-0.40) .. (0.95,-1.00);
+\path[line width=0.00mm, draw=L] (2.05,0.00) .. controls (2.05,-0.60) and (2.95,-0.60) .. (2.95,0.00);
+\path[line width=0.00mm, draw=L] (2.15,0.00) .. controls (2.20,-0.45) and (2.80,-0.45) .. (2.85,0.00);
+\path[line width=0.00mm, draw=L] (2.25,0.00) .. controls (2.35,-0.30) and (2.65,-0.30) .. (2.75,0.00);
+\path[line width=0.00mm, draw=L] (2.05,-1.00) .. controls (2.05,-0.40) and (2.95,-0.40) .. (2.95,-1.00);
+\path[line width=0.00mm, draw=L] (2.15,-1.00) .. controls (2.20,-0.55) and (2.80,-0.55) .. (2.85,-1.00);
+\path[line width=0.00mm, draw=L] (2.25,-1.00) .. controls (2.35,-0.70) and (2.65,-0.70) .. (2.75,-1.00);
+\end{tikzpicture}%
+\end{figure}

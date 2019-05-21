@@ -1,0 +1,220 @@
+\documentclass[tikz,border=3pt]{standalone}
+\usetikzlibrary{arrows}
+\usetikzlibrary{3d}
+\usepackage{cmap}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage{tikz,amssymb,amsmath}
+\usetikzlibrary
+    {
+        decorations.pathmorphing,
+        decorations.pathreplacing,
+        decorations.markings,
+        shapes.misc,
+        patterns,
+        calc,
+        scopes,
+        arrows,
+        fadings,
+        through,
+        shapes.misc,
+        arrows.meta,
+        3d,
+        quotes,
+        angles,
+        babel
+    }
+
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}[scale=2,
+    %Option for nice arrows
+    >=stealth, %
+    inner sep=0pt, outer sep=2pt,%
+    axis/.style={thick,->},
+    wave/.style={thick,color=#1,smooth},
+    polaroid/.style={fill=black!60!white, opacity=0.3},
+    interface1/.style={draw=gray!60,
+        % The border decoration is a path replacing decorator. 
+        % For the interface style we want to draw the original path.
+        % The postaction option is therefore used to ensure that the
+        % border decoration is drawn *after* the original path.
+        postaction={draw=gray!60,decorate,decoration={border,angle=-135,
+                    amplitude=0.2cm,segment length=0.5mm}}}, 
+    interface/.style={
+        pattern = north east lines,
+        draw    = none,
+        pattern color=blue!60,          
+    },
+]
+
+\newcommand{\volnovod}[5]{ %#1 #2 (lx,ly) -- #3 #4 (rx,ry) 
+    \draw[interface] (#1,#2) rectangle (#3,#2-#5);
+
+    \draw[interface] (#1,#4) rectangle (#3,#4+#5);
+    \draw[black] (#1,#2) -- (#3,#2);
+    \draw[black] (#1,#4) -- (#3,#4);
+}
+% Draw line annotation
+% Input:
+%   #1 Line offset (optional)
+%   #2 Line angle
+%   #3 Line length
+%   #5 Line label
+% Example:
+%   \lineann[1]{30}{2}{$L_1$}
+\newcommand{\lineann}[4][0.5]{%
+    \begin{scope}[rotate=#2, blue,inner sep=2pt]
+        \draw[dashed, blue!40] (0,0) -- +(0,#1)
+            node [coordinate, near end] (a) {};
+        \draw[dashed, blue!40] (#3,0) -- +(0,#1)
+            node [coordinate, near end] (b) {};
+        \draw[|<->|] (a) -- node[fill=white] {#4} (b);
+    \end{scope}
+}
+
+    % Colors
+    \colorlet{darkgreen}{green!50!black}
+    \colorlet{lightgreen}{green!80!black}
+    \colorlet{darkred}{red!50!black}
+    \colorlet{lightred}{red!80!black}
+    % \draw[thick] (0,0) rectangle (1.5,1);
+    % \draw (1.5,0)  node[below] {$a$};
+    % \draw (0,1)  node[left] {$b$};
+    % \draw (0,0)  node[anchor=north east,yshift=-0.5em, xshift=-.5em] {$0$};
+
+    % \draw[white] (-0.25,-0.25);
+    % \draw (0.75,0)  node[below, yshift=-.25cm] {$\varkappa(a,b)$};
+    
+    \draw[->] (0,0.5) -- ++(3.25,0) node [right] {$z$};
+    \draw[->] (0,0.5) -- ++(0,0.75) node [above] {$r$};
+
+    \volnovod{0}{0}{3}{1}{0.1};
+
+% \def\SIZE{3}
+% \def\setka{1}
+% \xdef\opa{0.6}
+% \ifx\setka\undefined
+%     {}
+%     \else
+%       \if\setka1
+%         \draw[step=1.0,blue,thick, opacity=\opa] (0,0) grid (\SIZE,\SIZE);
+%         \draw[step=0.5,blue,very thin, opacity=\opa] (0,0) grid (\SIZE,\SIZE);
+
+%         % \foreach \i in {0,1,...,\SIZE} {
+%         %     % \draw (0,\i) node [left,  opacity=\opa] {\i};
+%         %     % \draw (\i,0) node [below,  opacity=\opa] {\i};
+%         % }
+%       \else
+%         {}
+%       \fi
+%     \fi
+
+\begin{scope}[yshift=1cm]
+\draw[->-=0.5,thick,black](0.15,0.00) .. controls (0.20,-0.45) and (0.80,-0.45) .. (0.85,0.00);
+\draw[->-=0.5,thick,black](0.05,0.00) .. controls (0.05,-0.60) and (0.95,-0.60) .. (0.95,0.00);
+\draw[->-=0.5,thick,black](0.25,0.00) .. controls (0.35,-0.30) and (0.65,-0.30) .. (0.75,0.00);
+
+\draw[-<-=0.5,thick,black](1.05,0.00) .. controls (1.05,-0.60) and (1.95,-0.60) .. (1.95,0.00);
+\draw[-<-=0.5,thick,black](1.15,0.00) .. controls (1.20,-0.45) and (1.80,-0.45) .. (1.85,0.00);
+\draw[-<-=0.5,thick,black](1.25,0.00) .. controls (1.35,-0.30) and (1.65,-0.30) .. (1.75,0.00);
+
+\draw[-<-=0.5,thick,black](1.05,-1.00) .. controls (1.05,-0.40) and (1.95,-0.40) .. (1.95,-1.00);
+\draw[-<-=0.5,thick,black](1.15,-1.00) .. controls (1.20,-0.55) and (1.80,-0.55) .. (1.85,-1.00);
+\draw[-<-=0.5,thick,black](1.25,-1.00) .. controls (1.35,-0.70) and (1.65,-0.70) .. (1.75,-1.00);
+
+\draw[->-=0.5,thick,black](0.15,-1.00) .. controls (0.20,-0.55) and (0.80,-0.55) .. (0.85,-1.00);
+\draw[->-=0.5,thick,black](0.25,-1.00) .. controls (0.35,-0.70) and (0.65,-0.70) .. (0.75,-1.00);
+\draw[->-=0.5,thick,black](0.05,-1.00) .. controls (0.05,-0.40) and (0.95,-0.40) .. (0.95,-1.00);
+
+\draw[->-=0.5,thick,black](2.05,0.00) .. controls (2.05,-0.60) and (2.95,-0.60) .. (2.95,0.00);
+\draw[->-=0.5,thick,black](2.15,0.00) .. controls (2.20,-0.45) and (2.80,-0.45) .. (2.85,0.00);
+\draw[->-=0.5,thick,black](2.25,0.00) .. controls (2.35,-0.30) and (2.65,-0.30) .. (2.75,0.00);
+
+\draw[->-=0.5,thick,black](2.05,-1.00) .. controls (2.05,-0.40) and (2.95,-0.40) .. (2.95,-1.00);
+\draw[->-=0.5,thick,black](2.15,-1.00) .. controls (2.20,-0.55) and (2.80,-0.55) .. (2.85,-1.00);
+\draw[->-=0.5,thick,black](2.25,-1.00) .. controls (2.35,-0.70) and (2.65,-0.70) .. (2.75,-1.00);	
+\end{scope}
+
+
+    % \draw[fill=white,draw=none] (0,0) circle (2.5pt) node {$\bigotimes$} node[left,xshift=-.5em,yshift=-.5em] {$x$};
+    % \draw (3,0.5) circle (.5cm);
+    % \draw[->] (3,0.5) -- node[sloped,above] {r} ++(30:0.5);
+    % \draw (3,0)  node[below, yshift=-.25cm] {$\varkappa(r)$};
+
+    % \foreach \x in {0.25,0.5,0.6,0.7,0.75,0.8,0.9,1,1.25}{
+    %     \draw[postaction=decorate,decoration={
+    %     markings,
+    %     mark=at position 0.525 with {\arrow{>}}}] (\x,0) -- ++ (0,1);
+    % }
+
+    % \foreach \x in {0.25,0.5,0.6,0.7,0.75,0.8,0.9,1,1.25}{
+    %     \draw[postaction=decorate,decoration={
+    %     markings,
+    %     mark=at position 0.525 with {\arrow{<}}},xshift=1.5cm] (\x,0) -- ++ (0,1);
+    % }
+
+
+
+
+    % \foreach \x in {0.25,0.5,0.6,0.7,0.75,0.8,0.9,1,1.25}{
+    %     \draw[postaction=decorate,decoration={
+    %     markings,
+    %     mark=at position 0.525 with {\arrow{>}}},xshift=3cm] (\x,0) -- ++ (0,1);
+    % }
+
+
+    % \foreach \xxx in {0.75,0.75+3}{
+    %     \foreach \yyy in {0.2,0.4,0.6,0.8}{
+    %         \draw[fill=white,draw=none] (\xxx,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigodot$};
+    %         % \breakforeach
+    %     }
+    %     \foreach \yyy in {0.25,0.5,0.75}{
+    %         \draw[fill=white,draw=none] (\xxx-0.2,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigodot$};            
+    %         \draw[fill=white,draw=none] (\xxx+0.2,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigodot$};
+    %         % \breakforeach
+    %     }
+    %     \foreach \yyy in {0.33,0.66}{
+    %         \draw[fill=white,draw=none] (\xxx-0.4,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigodot$};            
+    %         \draw[fill=white,draw=none] (\xxx+0.4,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigodot$};
+    %         % \breakforeach
+    %     }
+    % }
+
+    % \foreach \xxx in {0.75+1.5}{
+    %     \foreach \yyy in {0.2,0.4,0.6,0.8}{
+    %         \draw[fill=white,draw=none] (\xxx,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigotimes$};
+    %         % \breakforeach
+    %     }
+    %     \foreach \yyy in {0.25,0.5,0.75}{
+    %         \draw[fill=white,draw=none] (\xxx-0.2,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigotimes$};            
+    %         \draw[fill=white,draw=none] (\xxx+0.2,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigotimes$};
+    %         % \breakforeach
+    %     }
+    %     \foreach \yyy in {0.33,0.66}{
+    %         \draw[fill=white,draw=none] (\xxx-0.4,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigotimes$};            
+    %         \draw[fill=white,draw=none] (\xxx+0.4,\yyy) circle (1.5pt) node[,scale=0.7] {$\bigotimes$};
+    %         % \breakforeach
+    %     }
+    % }
+    % \foreach \y in {0.25,0.5,0.75}{
+    %     \draw[dashed] (0.1,\y) -- ++(1.3,0);
+    %     % \draw[postaction=decorate,decoration={
+    %     % markings,
+    %     % mark=at position 0.5 with {\arrow{>}}}] (\x,0) -- ++ (0,1);
+    % }
+
+    % \draw (3.2,1.5) node {$\bigodot$,$\bigotimes$ -- поле $\vec{H}$}; 
+    % \draw (1.5,1.5) node {$\uparrow,\downarrow$ -- поле $\vec{E}$}; 
+
+    \begin{scope}[xshift=0.5cm]
+        \lineann[-0.5]{0}{2}{$\lambda_\text{в}$};
+    \end{scope}
+\end{tikzpicture}
+\end{document}

@@ -1,5 +1,573 @@
 %!TEX root = ../lections.tex
 \subsection{Главные (TEM) волны в линиях передачи с идеальными границами}
 
+У TEM-волн поперечное волновое число $\varkappa=0$:
+\begin{equation}
+	\varkappa=0 \Rightarrow h=k= \frac{\omega}{c}\sqrt{\varepsilon \mu}
+\end{equation}
+Поля таких волн выражаются следующим образом через функцию $\varphi$:
+\begin{gather}
+	\label{eperp}
+	\vec{E}_\perp=-\frac{1}{\sqrt{\varepsilon \mu}}\nabla_\perp \varphi\\
+	\vec{E}_\perp=-\frac{1}{\mu}\qty[\nabla_\perp \varphi,\vec{z}_0]
+\end{gather}
+
+При этом выполняются \textbf{граничные условия}: на каждом из проводников (допустим, есть набор проводников, вдоль которых распространяется волна)
+\begin{equation}
+	\varphi|_{l_i}=C_i,
+\end{equation}
+причем константа не обязана быть одна для всех проводников.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris1}
+	\caption{Набор проводников в задаче}
+	\label{fig:lect4:1}
+\end{figure}
+
+\subsubsection{Внутренняя задача}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris2}
+	\caption{Случай одного проводника}
+	\label{fig:lect4:2}
+\end{figure}
+Пусть у нас есть только один проводник, в котором есть цилиндрическая полость (рис. \ref{fig:lect4:2}). Рассмотрим внутреннюю задачу, т.е. распространение волны внутри цилиндрической полости. Оказывается, для граничного условия $\varphi_\perp|_l=C_1$ существует только тривиальное решение $\varphi_\perp=C_1$. В матфизике это доказывается. Начало доказательства такое:
+
+\begin{equation}
+	\Delta \varphi=\Div\qty(\varphi\nabla \varphi)=0 \quad \bigg| \iint\limits_\Sigma
+\end{equation}
+Это такая задача, которую проще доказать самому. Попробуйте это сделать сами.
+
+\subsubsection{Внешняя задача}
+Зададимся вопросом о решении той же задачи:
+\begin{equation}
+	\Delta_\perp \varphi=0, \quad \varphi|_l=\mathrm{const}
+\end{equation}
+Только теперь будем рассматривать её в области вне проводника, т.н. внешняя задача.
+
+Для начала рассмотрим задачу попроще, поле нити (рис. \ref{fig:lect4:3}). Решение её известно:
+\begin{equation}
+ 	\Delta_\perp \varphi=0 
+ 		\quad \Rightarrow \quad
+ 	\varphi \sim \ln r
+\end{equation} 
+
+Характер убывания полей здесь $E_r\sim \frac{1}{r}$, а для магнитного поля в силу импедансного соотношения $\frac{E_r}{H_\phi}=\eta_{\perp\text{в}}=1$ $H_\varphi\sim\frac{1}{r}$:
+\begin{equation}
+	E_r=H_\phi\sim\frac{1}{r}
+\end{equation}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris3}
+	\caption{Поле бесконечной проводящей нити}
+	\label{fig:lect4:3}
+\end{figure}
+
+Посмотрим на поведение полей при $r\to\infty$. Говорят, нужно поставить граничные условия (или закон убывания) на бесконечности. Чем плох закон $\frac{1}{r}$?
+
+Посчитаем средний по времени поток энергии через поперечное сечение, в котором распространяется волна. Сечение бесконечно, за исключением конечной площади проводника.
+
+Сначала вычислим вектор Пойнтинга (средний по времени и в проекции на $z$):
+\begin{equation}
+	\overline{S}_z=\frac{c}{8 \pi}\mathrm{Re}\qty(E_r\cdot H_\phi^*)\sim\frac{1}{r^2}
+\end{equation}
+\begin{equation}
+	\Pi=\iint\limits_\Sigma \overline{S}_z ds \sim
+	\iint\limits_\Sigma \frac{1}{r^2} (2\pi r \dd{r})
+	\sim \int\limits_a^\infty = \ln\frac{\infty}{a}=\infty
+\end{equation}
+Интеграл расходится на бесконечности. Говорят, что расходимость носит логарифмический характер. Получили бесконечную мощность волны: такую волну невозможно создать реальным источником --- волна не удовлетворяет критерию энергетической реализуемости.
+
+Можно сделать важный вывод: \textbf{вдоль одиночного проводника TEM-волна с конечной энергией распространятся не может}. А может,если проводников больше. Например, в линии из двух проводников (рис. \ref{fig:lect4:4}) TEM-волна уже возможна.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris4}
+	\caption{Закрытая линия из двух проводников}
+	\label{fig:lect4:4}
+\end{figure}
+
+Можно модифицировать задачу с нитью, если сделать нити две (рис. \ref{fig:lect4:5}):
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{img/lect4_ris5}
+	\caption{Поле двухпроводной линии}
+	\label{fig:lect4:5}
+\end{figure}
+
+В поперечном разрезе это поле диполя, а оно спадает быстрее, $\sim \frac{1}{r^2}$. Тогда
+\begin{equation}
+	E_\perp\sim H_\perp \sim \frac{1}{r^2}
+	\quad \Rightarrow \quad
+	\overline{S}_z \sim \frac{1}{r^4}, \quad
+	\Pi \sim \int\limits_{L_\text{характ}}^\infty \frac{1}{r^3} \dd{r}
+\end{equation}
+
+Мощность волны получится уже конечным числом, значит, в модифицированной задаче TEM-волна энергетически реализуема.
+
+\textbf{Конечный вывод:} TEM-волна в идеальной линии передачи возможна, если число проводников $\geq 2$.
+
+Например, в коаксиальной линии (рис. \ref{fig:lect4:6}) TEM-волна возможна.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris6}
+	\caption{Поле в коаксиальном кабеле}
+	\label{fig:lect4:6}
+\end{figure}
+
+Зададимся вопросом: возможны ли в такой линии TE и TM волны? Сформулируем утверждение, пока без доказательства: \textbf{в открытых линиях передачи TE и TM волны не существуют}.
+
 \subsection{TE и TM волны в идеальных линиях передачи закрытого типа}
+
+
 \subsubsection{TE и TM волны в прямоугольном волноводе}
+
+\paragraph{Решение для TM-волн.} Займемся решением TM-волны в прямоугольном волноводе (рис. \ref{fig:lect4:7}). Условимся что $a>b$. Эта задача поиска собственных функций $\phi^e$ и собственных значений $\varkappa$:
+\begin{equation}
+	\Delta_\perp \phi^e+\kappa^2\phi^e=0, \quad \phi^e|_l=0
+\end{equation}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris7}
+	\caption{Прямоугольный волновод}
+	\label{fig:lect4:7}
+\end{figure}
+
+В матфизике эта задача о колебании мембраны с закрепленным краем. Она решается разделением переменных:
+\begin{equation}
+	\phi^e=X(x)\cdot Y(y)
+\end{equation}
+\begin{equation}
+	\pdv[2]{\phi^e}{x}
+		+\pdv[2]{\phi^e}{y}
+			+\kappa^2 \phi^e =0  \quad \bigg| \cdot \frac{1}{XY}
+	\quad \Rightarrow \quad
+		\frac{X''}{X}+\frac{Y''}{Y}+\varkappa^2=0
+\end{equation}
+
+Тут надо произнести магическую фразу: так как первое слагаемое функция от $x$, второе функция от $y$, и их сумма равна константе для любых $x,y$, значит -- сами слагаемые тоже какие-то константы:
+\begin{equation}
+	\frac{X''}{X}=-\kappa_x^2, \quad
+	\frac{Y''}{Y}=-\kappa_y^2
+\end{equation}
+Определив таким образом константы, мы получаем:
+\begin{equation}
+	\kappa_x^2+ \kappa_y^2=\kappa^2
+\end{equation}
+Пока мы не нашли само $\kappa$. Это собственное число, и оно подлежит определению. Прежде чем его найти, найдем собственные функции, решая уравнения
+\begin{equation}
+	X''+\kappa_x^2X=0, \quad Y''+\kappa_y^2Y=0
+\end{equation}	
+Это уравнения известного вида, их решение
+\begin{equation}
+	X=C_1\cdot\cos{\kappa_x x}+
+		C_2\cdot\sin{\kappa_x x}
+	\qquad
+	Y=A_1\cdot\cos{\kappa_y y}+
+		A_2\cdot\sin{\kappa_y y}	
+\end{equation}
+Нужно удовлетворить граничным условиям: 
+\begin{equation}
+	\phi^e|_{y=0}=0 \quad \Rightarrow \quad
+		X(x)Y(0)=0 \quad \forall x \Rightarrow
+		Y(0)=0 \quad \Rightarrow \quad A_1=0
+\end{equation}
+\begin{equation}
+	\phi^e|_{x=0}=0 \quad \Rightarrow \quad
+		X(0)Y(y)=0 \quad \forall y \Rightarrow
+		X(0)=0 \quad \Rightarrow \quad C_1=0
+\end{equation}
+\begin{gather}
+	\phi^e|_{x=a}=0 \quad \Rightarrow \quad
+		X(a)Y(y)=0 \quad \forall y  \Rightarrow  \\ \Rightarrow
+		X(a)=0 \quad \Rightarrow \quad \kappa_x a = m\pi, \quad m=\xcancel{0},1,2,\ldots
+\end{gather}
+Поскольку $m=0$ дает тривиальное решение, мы его откидываем.
+\begin{gather}
+	\phi^e|_{y=b}=0 \quad \Rightarrow \quad
+		X(x)Y(b)=0 \quad \forall x  \Rightarrow  \\ \Rightarrow
+		Y(b)=0 \quad \Rightarrow \quad \kappa_y b = n\pi , \quad n=\xcancel{0},1,2,\ldots
+\end{gather}
+Теперь мы получили выражения для $X$ и $Y$:
+\begin{gather}
+	X_m(x)=C_2\cdot\sin\frac{\pi m x}{a}\\
+	Y_n(x)=A_2\cdot\sin\frac{\pi n y}{b}
+\end{gather}
+Теперь можем окончательно записать выражения для собственных функций и собственных значений в решении TM-волн:
+\begin{gather}
+	\label{phi_tm}
+	\left.\begin{aligned}
+		&\phi^e_{mn}=B_{mn}\sin\frac{\pi m x}{a}\sin\frac{\pi n y}{b}\\
+		&\kappa_{mn}^2=\qty(\frac{m\pi}{a})^2+\qty(\frac{n\pi}{b})^2	
+	\end{aligned}\right\}\,, \quad m,n=1,2,\ldots
+\end{gather}
+\paragraph{Решение для TE-волн.} Приведем решение без вывода:
+\begin{gather}
+	\label{phi_te}
+	\left.\begin{aligned}
+		&\phi^m_{mn}=B_{mn}\cos\frac{\pi m x}{a}\cos\frac{\pi n y}{b}\\
+		&\kappa_{mn}^2=\qty(\frac{m\pi}{a})^2+\qty(\frac{n\pi}{b})^2	
+	\end{aligned}\right\}\,, \quad m,n=(0),1,2,\ldots
+\end{gather}
+Важным отличием является то, что теперь одно из чисел $m,n$ может быть равно нулю (решение от этого не станет тривиальным).
+
+\paragraph{Низшая мода.} По определению, низшая мода -- та, у которой минимальное поперечное волновое число. Так как мы предполагали, что $a>b$, то в нашем случае это мода TE$_{10}$:
+\begin{equation}
+	\kappa_{10}=\frac{\pi}{a} \quad \rightarrow \quad \omega_{cr\,10}=\frac{\kappa_{10}\cdot c}{\sqrt{\varepsilon \mu}} 	
+\end{equation} 
+
+Именно моду TE$_{10}$ чаще всего используют на практике в линиях передачи. 
+
+Рассмотрим перпендикулярную структуру поля TE$_{10}$-волны. Нарисуем силовые линии полей $E$ и $H$ в плоскости $(x,y)$ -- перпендикулярной распространению волны (рис. \ref{fig:lect4:8})
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=1.5]{img/lect4_ris8}
+	\caption{Структура полей $\vec{E}$ и $\vec{H}$ ($\vec{H}$ изображено пунктиром)}
+	\label{fig:lect4:8}
+\end{figure}
+
+На границах волновода поле $E$ равно нулю (в силу условия $E_\tau=0$). Поле $\vec{E}$ можем получить из уравнений \eqref{phi_te},\eqref{eperp}:
+\begin{equation}
+	\vec{E}=\vec{E}_\perp=\vec{y}_0E_0\cdot\sin\frac{\pi x}{a}\exp[i(\omega t - hz)],
+\end{equation}
+где 
+\begin{equation}
+	h=\sqrt{
+		\frac{\omega^2}{c^2}\epsilon \mu - \qty(\frac{\pi}{a})^2
+	}
+\end{equation}
+
+Поле $H$ можно найти из импедансного соотношения (для TE-волны):
+\begin{equation}
+	\frac{E_y}{H_x}=-\sqrt\frac{\mu}{\epsilon}\frac{k}{h}
+\end{equation}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/lect4_ris9}
+	\caption{Поперечная структура полей $\vec{E}$ и $\vec{H}$ (мода TE$_{}$)}
+	\label{fig:lect4:9}
+\end{figure}
+
+За перенос энергии отвечают именно поперечные компоненты поля. Компонента поля
+$H_z \sim \cos\frac{\pi a}{x}$ также сдвинута по фазе во времени. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/lect4_ris10}
+	\caption{Продольная структура полей $\vec{E}$ и $\vec{H}$ (мода TE$_{}$)}
+	\label{fig:lect4:10}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{img/lect4_ris11}
+	\caption{Структура поля $\vec{H}$ (изображены силовые линии) и поля $\vec{E}$ (напряженность изображена цветом) волны TE$_{10}$ в прямоугольном волноводе}
+	\label{fig:lect4:11}
+\end{figure}
+
+\paragraph{Высшие моды.} В зависимости от соотношения между $a$ и $b$, порядок мод может быть разным (он определяется величиной поперечного волнового числа). Некоторые высшие моды:
+\begin{equation}
+\begin{aligned}
+ 		\text{TE}_{11}:& \quad  \kappa_{11}=\sqrt{\qty(\frac{\pi}{a})^2+\qty(\frac{\pi}{b})^2}\\
+ 		\text{TE}_{20}:& \quad  \kappa_{20}=\frac{2\pi}{a} \\
+ 		\text{TE}_{01}:& \quad  \kappa_{11}=\frac{\pi}{b}
+\end{aligned} 	
+\end{equation} 
+
+\paragraph{Мода TE$_{11}$.} В волне TE$_{11}$ $\kappa_{11}=\sqrt{\qty(\frac{\pi}{a})^2+\qty(\frac{\pi}{b})^2}$
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/rectangle/TE11}
+	\caption{Электрическое и магнитное поле в волне TE$_{11}$}
+	\label{fig:rectangle:TE11}
+\end{figure}
+Такую структуру поля называют <<розеткой>>.
+
+\paragraph{Мода TE$_{mn}$.} А что будет, если мы посмотрим на структуру поля, например, TE$_{2019,1938}$? Для мод высоких порядков $m>1, n>1$, нужно разделить волновод на $m$ частей по горизонтали и $n$ по вертикали, и в каждой такой ячейке поле будет повторять структуру моды TE$_{11}$. При этом направление силовых линий в соседних ячейках должно быть согласовано.
+
+Пример структуры поля приведен на рисунке \ref{fig:rectangle:TE44}, для случая $m=n=4$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/rectangle/TE44}
+	\caption{Электрическое поле в волне TE$_{44}$}
+	\label{fig:rectangle:TE44}
+\end{figure}
+
+Перейдем к описанию TM-волн.
+
+\paragraph{Мода TM$_{11}$.} Для волн в прямоугольном волноводе $\kappa_{mn}^{(TE)}=\kappa_{mn}^{(TM)}$, т.е. существует хотя бы двукратное вырождение волнового числа: одному волновому числу соответствует несколько мод.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/rectangle/TM11}
+	\caption{Электрическое и магнитное поле в волне TM$_{11}$}
+	\label{fig:rectangle:TM11}
+\end{figure}
+
+
+
+\paragraph{Мода TM$_{21}$.} Аналогично моде TE$_{mn}$, для мод TM$_{mn}$ нужно разделить волновод на $m$ частей по горизонтали и $n$ по вертикали, и в каждой такой ячейке поле будет повторять структуру моды TM$_{11}$. При этом направление силовых линий в соседних ячейках должно быть согласовано.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/rectangle/TM21}
+	\caption{Электрическое и магнитное поле в волне TM$_{21}$}
+	\label{fig:rectangle:TM21}
+\end{figure}
+
+Заметим, что линии электрического поля входят в стенки волновода под прямым углом. Иначе и быть не может, в силу граничного условия на проводнике $E_\tau=0$.
+
+\subsubsection{TE и TM волны в круглом волноводе}
+
+Наиболее часто на практике используются прямоугольные, круглые и коаксиальные волноводы. Займемся изучением круглых волноводов.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1.65]{img_lect5/cylindric/geometry}
+	\caption{Геометрия круглого волновода}
+	\label{fig:cylinder:geometry}
+\end{figure}
+
+Область определения задачи $0\leq r \leq a$, $0\leq \vartheta \leq 2\pi$. Каждая точка в сечении волновода задается двумя координатами $(r,\vartheta)$.
+
+Будем решать задачу (пока в общем виде, без граничных условий):
+\begin{equation}
+	\Delta_\perp \phi+\kappa^2\phi=0
+\end{equation}
+
+Здесь лаплассиан в цилиндрических координатах
+\begin{equation}
+	\Delta_\perp\phi=\frac{1}{r}\pdv{r}\qty(r\pdv{\phi}{r})+\frac{1}{r^2}\pdv[2]{\phi}{\vartheta}
+\end{equation}
+
+Также как и при поиске поля в прямоугольном волноводе, воспользуемся методом разделения переменных:
+\begin{equation}
+	\phi=R(r)\cdot\Theta(\vartheta)
+\end{equation}
+
+Применив стандартным образом разделение переменных (подставив $\phi$ как $R\cdot\Theta$ в решаемое уравнение и домножив уравнение слева и справа на $\frac{r^2}{R\Theta}$), получим
+\begin{equation}
+	\underbrace{r^2\frac{R''}{R}+r\frac{R'}{R}+\kappa^2r^2}_{f(r)=+C_1}+
+	\underbrace{\frac{\Theta''}{\Theta}}_{g(\vartheta)=-C_1}
+	=0
+\end{equation}
+
+Заметим, что комбинация из первых трех слагаемых может зависеть только от $r$, последнее слагаемое может зависеть только от $\vartheta$, а их сумма ни от чего не зависит - значит и первые три слагаемых в сумме ни от чего не зависят и равны некой константе $-C_1$, тогда последнее слагаемое (которое тоже ни от чего не зависит) равно $+C_1$.
+
+Таким образом, разделение переменных успешно завершилось.
+\paragraph{Уравнение относительно $\Theta$.}
+Такое уравнение запишется в виде
+\begin{equation}
+	\Theta''+C_1\Theta=0
+\end{equation}
+Решение этого уравнения (гармонического осциллятора) нам хорошо известно:
+\begin{equation}
+	\Theta=A_1\cos(\sqrt{C_1}\vartheta)+A_2\sin(\sqrt{C_1}\vartheta)
+\end{equation}
+Сразу заметим, что отсюда следует, что $\sqrt{C_1}=m$ -- целое число. Действительно, в силу симметрии задачи
+\begin{equation}
+	\Theta(\vartheta)=\Theta(\vartheta+2\pi),
+\end{equation}
+а такое возможно только при целой частоте $\sqrt{C_1}$.
+
+\paragraph{Уравнение относительно $r$.} Его можно переписать, если учесть что $\sqrt{C_1}=m$, тогда
+\begin{equation}
+	R''+\frac{1}{r}R'+\qty(\kappa^2-\frac{m^2}{r^2})R=0
+\end{equation}
+Можно ввести замену переменных $x=\kappa r$, тогда
+\begin{equation}
+	R''_{xx}+\frac{1}{x}R'_x+\qty(1-\frac{m^2}{x^2})R=0, \quad R=R(x)
+\end{equation}
+Это известное уравнение Бесселя. Его решение получается в виде специальных, цилиндрических функций Бесселя:
+\begin{equation}
+	R=B_q\cdot J_m(x)+B_2\cdot N_m(x)
+\end{equation}
+$J_m$ называют функциями Бесселя первого рода, или просто функциями Бесселя, а $N_m$ функциями Бесселя второго рода, или функциями Неймана. Их поведение хорошо изучено, не хуже чем поведение синуса и косинуса. Рассмотрим некоторые характерные моменты.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1.3]{img_lect5/bessel/bessel012}
+	\caption{Функции Бесселя первого рода}
+	\label{fig:cylinder:besselJ}
+\end{figure}
+Первый максимум функции Бесселя второго порядка лежит на пересечении функций Бесселя первого и нулевого порядков. Это свойство функций Бесселя. Еще одно свойство заключается в том, что ноль функции Бесселя первого порядка совпадает с точкой минимума функции Бесселя нулевого порядка.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=1.4]{img_lect5/bessel/besselY012}
+	\caption{Функции Бесселя второго рода}
+	\label{fig:cylinder:besselN}
+\end{figure}
+Функции Неймана мы пока не будем рассматривать подробно. Это вызвано тем, что у всех функций Неймана есть особенность: в нуле они расходятся, и поэтому в нашем решении, чтобы решение в нуле было конечно, придется положить $B_2=0$.
+
+Вообще говоря, в коаксиальной линии это будет не так, потому что там область определения задачи не включает $r=0$, и  будет $B_2\ne0$.
+
+Итак, наше решение теперь можно переписать в виде
+\begin{equation}
+	\phi_m=J_m(\kappa r)\qty(A_1\cos(m \vartheta)+A_2\sin(m \vartheta))
+\end{equation}
+Здесь константу $B_1$ мы уже не пишем, предпологая что она сидит в константах $A_1,A_2$.
+Иногда, для краткости, комбинацию синуса и косинуса пишут так:
+\begin{equation}
+	A_1\cos(m \vartheta)+A_2\sin(m \vartheta)=\mqty(\cos m\vartheta \\\sin m\vartheta)
+\end{equation}
+
+Перейдем к удовлетворению граничных условий.
+
+\paragraph{Граничные условия TE-волн.} На границе волновода должна занулятся производная поперечной функции:
+\begin{equation}
+	\pdv{\phi}{r}\bigg|_{r=a}=0 \quad \Rightarrow \quad \pdv{J_m(\kappa r)}{r}\bigg|_{r=a}=0
+\end{equation}
+Это значит, что
+\begin{equation}
+	J_m'(x)=0, \quad x=\kappa a
+\end{equation}
+Мы можем пронумеровать все нули производной, и обозначить эти точки $x=\mu_{mn}$, где $m$ -- порядок функции Бесселя, а $n$ -- номер нуля производной. Например, $\mu_{11}=1.84$. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.4]{img_lect5/bessel/bessel_mu}
+	\caption{Нули производной функции Бесселя}
+	\label{fig:cylinder:besselN}
+\end{figure}
+Тогда можем выразить через $\mu$ и волновое число:
+\begin{equation}
+	\kappa_{mn}^{TE}=\frac{\mu_{mn}}{a}
+\end{equation}
+В итоге получаем решение для TE-волн:
+\begin{equation}
+	\phi_m=C_{mn} J_m(\kappa_{mn} r)\mqty(\cos m\vartheta \\\sin m\vartheta), \quad
+	m=0,1,2,3,\ldots \quad n=1,2,\ldots
+\end{equation}
+Некоторые значения:
+\begin{equation}
+\begin{aligned}
+ 		\mu_{11}=&1.84, \quad \kappa_{11}=&\frac{1.84}{a}\\[0.7em]
+ 		\mu_{21}=&3.05, \quad \kappa_{21}=&\frac{3.05}{a}\\[0.7em]
+ 		\mu_{01}=&3.83, \quad \kappa_{01}=&\frac{3.83}{a}
+\end{aligned} 	
+\end{equation} 
+\paragraph{Граничные условия TM-волн.} Теперь на границе зануляется поперечная функция:
+\begin{equation}
+	\phi\big|_{r=a}=0 
+		\quad \Rightarrow \quad
+			J_m(\kappa r)=0
+\end{equation}
+Также, как мы это делали для TE-волн, пронумеруем нули функции Бесселя:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/bessel/bessel_kappa}
+	\caption{Нули функции Бесселя}
+	\label{fig:cylinder:besselN}
+\end{figure}
+И обозначим нули 
+\begin{equation}
+	x=\nu_{mn},
+\end{equation}
+И тогда
+\begin{equation}
+	\kappa_{mn}^{TM}=\frac{\nu_{mn}}{a}
+\end{equation}
+
+Некоторые значения:
+\begin{equation}
+\begin{aligned}
+ 		\nu_{01}=&2.405, \quad \kappa_{01}^{TM}=&\frac{2.405}{a}\\[1em]
+ 		\mu_{11}=&3.83, \quad \kappa_{11}^{TM}=&\frac{3.83}{a}
+\end{aligned} 	
+\end{equation}
+
+\paragraph{Полное решение задачи.} Если мы введем волновое число как
+\begin{equation}
+	\kappa_{mn}=\left\{
+	\begin{aligned}
+		\frac{\mu_{mn}}{a}, \quad \mathrm{TE},\\
+		\frac{\nu_{mn}}{a}, \quad \mathrm{TM}
+	\end{aligned}\right.
+\end{equation}
+Тогда полное решение задачи запишется  в виде
+\begin{equation}
+	\phi_m=C_{mn} J_m(\kappa_{mn} r)\mqty(\cos m\vartheta \\\sin m\vartheta), \quad
+	m=0,1,2,3,\ldots \quad n=1,2,\ldots
+\end{equation}
+\paragraph{Низшая мода.} У низшей моды наименьшее волновое число. В случае круглого волновода низшей модой будет TE$_{11}$: $\kappa_{11}=\frac{1.84}{a}$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.4]{img_lect5/cylindric/TE11}
+	\caption{Электрическое и магнитное поле в волне TE$_{11}$}
+	\label{fig:cylinder:TE11}
+\end{figure}
+\paragraph{Замечание.} Можно сформулировать некоторое правило рисования силовых линий. Если построить линии уровня $\phi=\mathrm{const}$, то это будут силовые линии чисто поперечного поля.
+
+Вообще говоря, поле моды TE$_{11}$ круглого волновода топологически подобно моде TE$_{10}$ прямоугольного волновода. Если постепенно деформировать стенки прямоугольного волновода, скругляя их, то линии поля постепенно будут переходить в линии поля круглого волновода.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.4]{img_lect5/cylindric/TE11_rotated}
+	\caption{Поляризационное вырождение моды TE$_{11}$}
+	\label{fig:cylinder:TE11_rotated}
+\end{figure}
+Кроме того, мода TE$_{11}$ круглого волновода \textbf{двукратно вырождена:} имеет место так называемое \textbf{поляризационное вырождение} (рис. \ref{fig:cylinder:TE11_rotated}).
+
+Действительно, если повернуть волновод на 90 градусов, то получаем другое решение. Их не бесконечно много, а всего два фундаментальных, а все остальные образуются как их суперпозиция. 
+
+
+Перейдем к рассмотрению следующих (по росту волнового числа) волн.
+\newpage
+\paragraph{Мода TM$_{01}$.} Вообще говоря, волны с первым индексом $0$ TE$_{0n}$, TM$_{0n}$ не зависят от координат и называются \textbf{симметричными модами.}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.25]{img_lect5/cylindric/TM01}
+	\caption{Электрическое и магнитное поле в волне TM$_{01}$}
+	\label{fig:cylinder:TM01}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=2]{img_lect5/cylindric/TM01z}
+	\caption{Вид в продольном разрезе на волну TM$_{01}$}
+	\label{fig:cylinder:TM01}
+\end{figure}
+
+\newpage
+\paragraph{Мода TE$_{21}$.} $\kappa_{21}=\frac{3.05}{a}$
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/cylindric/TE21}
+	\caption{Электрическое поле в волне TE$_{21}$}
+	\label{fig:cylinder:TE21}
+\end{figure}
+
+\paragraph{Мода TE$_{01}$.} $\kappa_{01}^{TE}=\kappa_{11}^{TM}=\frac{3.83}{a}$
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/cylindric/TE01}
+	\caption{Электрическое и магнитное поле в волне TE$_{01}$}
+	\label{fig:cylinder:TE01}
+\end{figure}
+\newpage
+\paragraph{Мода TM$_{11}$.} $\kappa_{01}^{TE}=\kappa_{11}^{TM}=\frac{3.83}{a}$
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/cylindric/TM11}
+	\caption{Магнитное поле в волне TM$_{11}$}
+	\label{fig:cylinder:TM11}
+\end{figure}
+
+\paragraph{Высокая мода TM$_{81}$.} Первый индекс определяет изрезанность по углу: 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/cylindric/TM81}
+	\caption{Магнитное поле в волне TM$_{81}$}
+	\label{fig:cylinder:TM81}
+\end{figure}
+
+\newpage
+\paragraph{Высокая мода TE$_{m1}$, $m\geq 1$.} Эту моду можно описать и на языке геометрической оптики. Её также называют модой шепчущей галереи.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.5]{img_lect5/cylindric/TEm1}
+	\caption{Электрическое поле в волне TE$_{m1}$}
+	\label{fig:cylinder:TMm1}
+\end{figure}
+
+Шепчущая галерея - это многократное переотражение волны вдоль стенки. Если два монаха стоят на противоположных концах диаметра, а настоятель в центре, то он не слышит разговор монахов, а они друг друга слышат: волна распространяется, двигаясь под малым углом к стене.

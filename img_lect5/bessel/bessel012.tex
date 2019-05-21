@@ -1,0 +1,53 @@
+\documentclass[12pt]{standalone}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[%
+	width=12cm,
+	height=7cm, 
+	set layers,
+    axis on top,
+	ticklabel style={fill=white},
+	axis lines=middle, 
+	xmax=6.5,
+	ymax=1.2, 
+	ymin=-0.5,
+	domain=0:6,
+	xlabel={$x$},
+	ylabel={$J$},
+	xtick=\empty,
+	ytick=\empty,
+	extra x ticks={1.84,2.405,3.05,3.83},
+	extra y ticks={0,1},
+	x tick style={thick, black},
+	% extra x tick labels={	% их подписи
+	 		% {$U_{min}$}, {$U_{min}+\Delta U$}
+	% }, 
+]
+
+\addplot+[id=parable, thick, dashed, samples=500, mark=none, width=2pt]
+	gnuplot{besj0(x)};% node[pin=90:{$J_0(x)$}]{}; 
+	
+	\addlegendentry{$J_0(x)$};
+\addplot+[id=parable, thick, samples=500, mark=none, width=2pt,
+	color=red, densely dash dot] gnuplot{besj1(x)};% node[pin=130:{$J_1(x)$}]{};
+	
+	\addlegendentry{$J_1(x)$};
+
+\addplot+[id=parable2,thick,  samples=500, mark=none, width=2pt,
+	color=black] gnuplot{2*1/x * besj1(x) - besj0(x)};% node[pin=-140:{$J_2(x)$}]{};
+	\addlegendentry{$J_2(x)$};
+
+\draw[dashed] (1.84,0) -- (1.84,0.58186);
+\draw[dashed] (3.05,0) -- (3.05,0.486);
+\draw[dashed] (3.83,0) -- (3.83,-0.405);
+\draw[red,fill=white] (1.84,0.58186) circle (2pt);
+\draw[black,fill=white] (3.05,0.486) circle (2pt);
+\draw[blue,fill=white] (3.83,-0.405) circle (2pt);
+
+\end{axis} 
+\end{tikzpicture} 
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+\tikzset{->-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+  \tikzset{-<-/.style={decoration={
+  markings,
+  mark=at position #1 with {\arrow{<}}},postaction={decorate}}}
+\begin{document}
+\begin{tikzpicture}
+  \begin{axis}[
+      % domain = 0:2,
+      y domain = -1.1:1.1,
+      axis lines=none,
+      view={0}{90},
+      minor tick num = 4,
+      xtick=\empty,
+      ytick=\empty,
+      unit vector ratio = 1 1, 
+      % restrict y to domain=0:1,
+      % restrict x to domain=0:2,
+      xmin=-1.1,xmax=1.1,ymin=-1.1,ymax=1.1,
+      % colorbar as palette,
+      % colorbar style={
+      %   grid=major,
+      %   grid style={black},
+      %   ytick style={draw=none},
+      % },
+      enlargelimits = false,
+      % axis on top,
+    ]
+
+    % Colored background
+    % \addplot graphics[xmin = 0, xmax = 2, ymin = 0, ymax = 1] {myplot.png};
+    % Contour lines
+    \draw (axis cs:0,0) circle [blue, radius=1];
+        \addplot[dashed] table[col sep=comma]{TM11_data/data.csv} node[pos=0.5] {};
+        % \addplot[mark=none,postaction={decorate}] table[col sep=comma] {myplot.csv};
+
+
+        % \addplot3[blue,
+        %     quiver={
+        %      u={-sin(pi*x/2*180/pi)*cos(pi*y*180/pi)},
+        %      v={-cos(pi*x/2*180/pi)*sin(pi*y*180/pi)},
+        %      scale arrows=0.1,
+        %     },
+        %     densely dashed,
+        %     -stealth,samples=15]
+        %         {0};
+
+                % \draw[fill=white, draw=none] (0.9,0.5) rectangle (1.1,0.6);
+    % \draw[dashed] (0.1,0.1) to[out=90-19, in=-90+19] (0.1,0.9);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);
+
+    % \draw[dashed] (0.1,0.1) to[out=90-19, in=-90+19] (0.1,0.9);
+    % \draw[dashed] (0.3,0.1) to[out=90-32, in=-90+32] (0.3,0.9);      
+% \draw[dashed] (0.20,0.90) .. controls (0.50,0.75) and (0.50,0.25) .. (0.20,0.10);
+% \draw[dashed] (1.80,0.90) .. controls (1.55,0.75) and (1.55,0.25) .. (1.80,0.10);
+% \draw[dashed] (1.70,0.05) .. controls (1.20,0.25) and (0.80,0.25) .. (0.30,0.05);
+% \draw[dashed] (0.30,0.95) .. controls (0.80,0.75) and (1.20,0.75) .. (1.70,0.95);
+% \draw[dashed] (0.15,0.90) .. controls (0.30,0.69) and (0.30,0.31) .. (0.15,0.10);
+% \draw[dashed] (1.85,0.90) .. controls (1.70,0.69) and (1.70,0.31) .. (1.85,0.10);
+  \end{axis}
+\end{tikzpicture}
+\end{document}
